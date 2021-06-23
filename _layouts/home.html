@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+{% assign header_pretext = site.data.sitetext.header.pretext %}
+{% assign header_title = site.data.sitetext.header.title %}
+{% assign header_subtext = site.data.sitetext.header.subtext %}
+{% assign header_button = site.data.sitetext.header.button %}
+{% assign header_button_link = site.data.sitetext.header.buttonlink %}
+
+<div class="home">
+    {% include masthead.html
+        pretext=header_pretext
+        title=header_title
+        subtext=header_subtext
+        button_text=header_button
+        button_link=header_button_link
+    %}
+    
+    {% include calls_to_action.html %}
+    {% include service_category_cards.html %}
+    {% comment %}{% include timeline.html %}{% endcomment %}
+    {% comment %}{% include team.html %}{% endcomment %}
+    {% comment %}{% include clients.html %}{% endcomment %}
+    {% include contact.html %}
+</div>

@@ -1,0 +1,23 @@
+<!-- Header -->
+
+<header class="masthead">
+    <div class="container">
+        <div class="intro-text">
+            {%- if include.pretext -%}
+            <div class="intro-lead-in">{{ include.pretext | markdownify }}</div>
+            {%- endif -%}
+            {%- if include.title -%}
+            <div class="intro-heading text-uppercase">{{ include.title | markdownify }}</div>
+            {%- endif -%}
+
+            {%- if include.subtext -%}
+            <div class="intro-lead-out">{{ include.subtext | markdownify }}</div>
+            {%- endif -%}
+            {%- if button_text -%}
+            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{{ include.button_link }}">{{ include.button_text }}</a>
+            {%- endif -%}
+        </div>
+    </div>
+</header>
+
+<!-- End Header -->

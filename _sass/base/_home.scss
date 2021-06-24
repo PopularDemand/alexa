@@ -2,9 +2,9 @@
 
 .home, .landing-page {
     .page-section {
-        padding: 100px 0;
+        padding: $page-spacing-lg 0;
         @media(min-width:768px) {
-            padding: 150px 0;
+            padding: $page-spacing-lg 0;
         }
         
         &.section-slim {
@@ -19,7 +19,7 @@
         }
         
         h2.section-heading {
-            font-size: 40px;
+            font-size: 24px;
             margin-top: 0;
             margin-bottom: 15px;
         }

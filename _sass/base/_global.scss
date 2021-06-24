@@ -22,11 +22,6 @@ a {
   }
 }
 
-a[target="_blank"]::after {
-  content: "\2197"; // ↗
-  margin: 0 1em 0 2px;
-}
-
 a.btn {
   display: flex;
   align-items: center;

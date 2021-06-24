@@ -1,42 +1,47 @@
 // Styling for the masthead
 header.masthead {
-  // text-align: center;
-  // color: $gray-900;
   background-image: url("#{$header-image}");
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-position: center center;
+  background-position: bottom center;
   background-size: cover;
-  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.6);
+
+  @media(min-width:992px) {
+    padding-top: $approx-header-height-desktop;
+  }
 
   .intro-text {
     padding-top: 50px;;
     padding-bottom: 50px;
-    width: fit-content;
     text-align:center;
-    margin: auto;
+    text-shadow: 0px 0px 2px $primary;
 
     .intro-lead-in {
-      font-size: 28px;
+      font-size: 20px;
       color: white;
       line-height: 22px;
       @include script-font;
 
-      &:not(:last-child) {
-        margin-bottom: 25px;
+      @media(min-width:992px) {
+        font-size: 42px;
       }
+
+      p { margin-bottom: 0; }
     }
+
     .intro-heading {
-      font-size: 50px;
+      font-size: 20px;
       font-weight: 700;
-      line-height: 75px;
+      line-height: 30px;
       color: white;
-      @include primary-shadow;
+      text-shadow: 0px 0px 2px $primary;
       @include heading-font;
-      
-      &:not(:last-child) {
-        margin-bottom: 25px;
+
+      @media(min-width:992px) {
+        font-size: 24px;
       }
+      
+      p { margin-bottom: 0; }
     }
 
     .intro-lead-out {
@@ -46,31 +51,48 @@ header.masthead {
       letter-spacing: .5px;
       color: $white;
 
+      @media(min-width:992px) {
+        font-size: 42px;
+      }
+
       @include heading-font;
+    }
+
+    .social-links {
+      .social-link {
+        color: white;
+        text-decoration: none !important;
+        font-size: 1.3em;
+        margin: 0 10px;
+
+        @media(min-width:992px) {
+          font-size: 32px;
+        }
+      }
     }
   }
 }
 
-@media(min-width:992px) {
-  header.masthead {
+// @media(min-width:992px) {
+//   header.masthead {
     
-    .intro-text {
-      padding-top: 300px;
-      padding-bottom: 200px;
+//     .intro-text {
+//       padding-top: 300px;
+//       padding-bottom: 200px;
       
-      .intro-lead-in {
-        font-size: 40px;
-        line-height: 40px;
-        margin-bottom: 25px;
-        @include script-font;
-      }
-      .intro-heading {
-        font-size: 75px;
-        font-weight: 700;
-        line-height: 75px;
-        margin-bottom: 50px;
-        @include heading-font;
-      }
-    }
-  }
-}
+//       .intro-lead-in {
+//         font-size: 40px;
+//         line-height: 40px;
+//         margin-bottom: 25px;
+//         @include script-font;
+//       }
+//       .intro-heading {
+//         font-size: 75px;
+//         font-weight: 700;
+//         line-height: 75px;
+//         margin-bottom: 50px;
+//         @include heading-font;
+//       }
+//     }
+//   }
+// }

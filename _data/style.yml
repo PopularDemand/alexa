@@ -5,7 +5,7 @@ white: "#fff"
 black: "#000"
 
 #Image Customization
-header-image: "../img/header.jpg"
+header-image: "../img/alexa_head.png"
 contact-image: "../img/contact.png"
 
 #Font Awesome icon for portfolio grid when an item is hovered over

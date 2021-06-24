@@ -1,9 +1,16 @@
 header:
-  pretext: <span>&mdash; High Ground &mdash;</span>
-  title: <div class="header-text">Design<br>Studio<div>
-  subtext: Business &bull; Art &bull; Community
+  pretext: <span>&mdash; Alexa D. Anderson &mdash;</span>
+  title: "Web Engineer"
+  subtext: 
   button:
   buttonlink:
+  social_links:
+    - class: "fa-twitter"
+      href: "https://twitter.com/alexatheperfect"
+    - class: "fa-linkedin-in"
+      href: "https://linkedin.com/in/alexa-anderson"
+    - class: "fa-github"
+      href: "https://github.com/populardemand"
 
 service_categories:
   section_title: We Create

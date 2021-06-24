@@ -43,33 +43,4 @@
     .text-muted {
         color: $gray-300;
     }
-
-    @media(min-width:992px) {
-      header.masthead {
-        
-        .intro-text {
-          padding-top: 200px;
-          padding-bottom: 200px;
-
-          .intro-lead-in {
-            font-size: 40px;
-            line-height: 40px;
-            margin-bottom: 25px;
-            @include script-font;
-          }
-          .intro-heading {
-            font-size: 150px;
-            font-weight: 700;
-            line-height: 150px;
-            margin-bottom: 50px;
-            @include heading-font;
-          }
-
-          .intro-lead-out {
-            font-size: 40px;
-            @include script-font;
-          }
-        }
-      }
-    }
 }

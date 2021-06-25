@@ -40,8 +40,8 @@ nav:
   - title: "@iamalexbrady"
     section: "iamalexbrady"
 
-  - title: "SpareFoot"
-    section: "sparefoot"
+  # - title: "SpareFoot"
+  #   section: "sparefoot"
 
   - title: "Open-source"
     section: "open-source"

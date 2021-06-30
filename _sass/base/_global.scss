@@ -12,6 +12,11 @@ body {
 // Element styles
 p {
   line-height: 1.75;
+  margin-bottom: 1.5em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 a {

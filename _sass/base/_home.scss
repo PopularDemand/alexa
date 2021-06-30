@@ -61,3 +61,27 @@
         color: #fff;
     }
 }
+
+#highground {
+    background-color: #66cc99;
+    color:#333;
+
+    .service-table {
+        td {
+            vertical-align: middle;
+            border: none;
+            line-height: 1.2;
+        }
+    }
+
+    .highground-slogan {
+        font-variant: all-small-caps;
+        font-weight: bold;
+        font-size: 1.4em;
+    }
+
+    .section-cta {
+        background-color: #333;
+        color: #fff;
+    }
+}

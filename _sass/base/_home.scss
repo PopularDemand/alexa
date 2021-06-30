@@ -52,6 +52,14 @@
     border-left: 1px solid #aaa;
 }
 
+.service-table {
+    td {
+        vertical-align: middle;
+        border: none;
+        line-height: 1.2;
+    }
+}
+
 #lovespresents {
     background-color: #073563;
     color: #fff;
@@ -67,11 +75,7 @@
     color:#333;
 
     .service-table {
-        td {
-            vertical-align: middle;
-            border: none;
-            line-height: 1.2;
-        }
+        color: #333;
     }
 
     .highground-slogan {
@@ -83,5 +87,30 @@
     .section-cta {
         background-color: #333;
         color: #fff;
+    }
+}
+
+#alexbrady {
+    background-color: #333;
+    color:#fefefe;
+
+    a:not(.btn) {
+        color: #fefefe;
+        font-weight: bold;
+        letter-spacing: .5px;
+    }
+
+    .service-table {
+        color: #fefefe;
+    }
+
+    .section-cta {
+        background-color: #000;
+        color: #fff;
+
+        border-top-color: #777;
+        border-right-color: #555;
+        border-bottom-color: #555;
+        border-left-color: #777;
     }
 }

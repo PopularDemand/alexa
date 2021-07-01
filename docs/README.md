@@ -3,7 +3,6 @@
 
 The Jekyll structure of this theme includes:
 
-- the `page` layout allows custom pages, as seen in the legal and 404 pages
 - `sitetext.yml` enables customization of homepage text
 - `navigation.yml` enables fully customizable navigation
 - `designs.yml` - High Ground specific service offerings
@@ -25,14 +24,24 @@ $ bundle install
 
 ## Development
 ```bash
-$ jekyll serve
+$ jekyll serve -lw
 ```
 
-And open your browser at `http://localhost:4000`.
+And open your browser to `http://localhost:4000`
 
 ## Development notes
 
 * When creating a new file within the `_sass` directory, you must add the file to the `@import` list within `/assets/css/agency.scss` file
+
+## Production
+
+Locally run
+
+```bash
+$ jekyll build -d docs
+```
+
+to finalize changes into the /docs directory before pushing to production.
 
 ## Contributing
 

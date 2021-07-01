@@ -13,15 +13,15 @@
 
 theme: jekyll-agency
 
-url    : "" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "" # the subpath of your site, e.g. /blog
+url    : "https://alexa-anderson.com" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/" # the subpath of your site, e.g. /blog
 include: ["_pages"]
 
 title      : Alexa Anderson
 email      : hellohighgroundtech@gmail.com
 description: Professional Website
 author     : High Ground Tech Team
-coyright   : 2021
+copyright   : 2021
 # logo     : #optional, defaults to site title
   # path: assets\img\clients\creative-market.jpg
   # height: 60 #height in px, defaults to 52px
@@ -36,4 +36,4 @@ markdown: kramdown
 
 # Uncomment following line to use Formspree form ID based URL instead of email based URL
 # Details: https://help.formspree.io/hc/en-us/articles/360017735154-How-to-prevent-spam
-formspree_form_path: "f/maylvvwr"
+# formspree_form_path: "f/maylvvwr"

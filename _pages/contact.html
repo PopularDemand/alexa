@@ -1,8 +1,8 @@
 ---
 permalink: /contact
-layout: default
+layout: page
 external_id: contact
-main_content_class: contact
+class_name: contact-page
 ---
 
 <!-- Assign Variables -->
@@ -10,10 +10,13 @@ main_content_class: contact
 <!-- Rendered content -->
 {% include contact_modal.html %}
 
-<div class="header-spacer"></div>
-
-<h1>Contact</h1>
-
-<a href="assets/resume.pdf">View Resume</a>
+<div class="page-section row">
+	<div class="col col-12 col-md-8 offset-md-2">
+		<h1>Contact</h1>
+		<p>Alexa is currently available for full-time employment and small-business/personal custom software commissions.</p>
+		<p>Reach out with employment or software builds. Reach out if you have a cool project in mind, and you want to share collaborative thoughts.</p>
+		<a href="/resume">View Resume</a>
+	</div>
+</div>
 
 {% include contact_form.html %}

@@ -74,6 +74,23 @@ h6 {
 }
 
 // Bootstrap Overrides
+.navbar-brand {
+  font-size: 1em;
+  padding:0;
+
+  @media(min-width:576px) {
+    font-size: 1.25em;
+  }
+}
+
+.nav-link {
+  font-size: .9em !important;
+
+  @media(min-width:576px) {
+    font-size: 1.25em;
+  }
+}
+
 .modal {
     padding-right: 0px !important;
 }

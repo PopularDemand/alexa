@@ -7,6 +7,10 @@ body {
   @media only screen and (max-width: 991px) {
     padding-top: $approx-header-height-mobile;
   }
+
+  @media only screen and (min-width: 992px) {
+    padding-top: $approx-header-height-mobile;
+  }
 }
 
 // Element styles

@@ -12,10 +12,10 @@
         </a>
       </div>
 
-      <div class="right d-flex align-items-center">
-        {% assign no_collapse_menu_links = site.data.navigation.nav | where: "no_collapse", true %}
+      <div class="right d-flex align-items-center d-lg-none">
+        {% assign links_visible_small = site.data.navigation | where: "visible_small_screen", true %}
         <ul class="navbar-nav text-uppercase">
-          {% for link in no_collapse_menu_links %}
+          {% for link in links_visible_small %}
             <li class="nav-item">
               {%- if link.url -%}
                 <a class="nav-link js-scroll-trigger" href="{{ link.url }}">{{ link.title }}</a>
@@ -33,9 +33,9 @@
         </button>
       </div>
       
-      <div class="collapse navbar-collapse" id="navbarResponsive">
+      <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-auto">
-          {% assign collapse_menu_links = site.data.navigation.nav | where: "no_collapse", blank %}
+          {% assign collapse_menu_links = site.data.navigation %}
           {%- for link in collapse_menu_links -%}
 
             {%- if link.dropdown -%}

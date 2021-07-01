@@ -7,7 +7,7 @@ header.masthead {
   background-size: cover;
 
   @media(min-width:992px) {
-    padding-top: $approx-header-height-desktop;
+    padding-top: 90px;
   }
 
   .intro-text {
@@ -17,7 +17,7 @@ header.masthead {
     text-shadow: 0px 0px 2px $primary;
 
     .intro-lead-in {
-      font-size: 20px;
+      font-size: 24px;
       color: white;
       line-height: 22px;
       @include script-font;

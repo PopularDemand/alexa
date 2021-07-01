@@ -1,47 +1,47 @@
-nav:
+# nav:
   # - title: "Portfolio"
   #   url: /designs
 
-  # - title: Services
-  #   dropdown: true
-  #   dropdown_links:
-  #     - title: For Business
-  #       url: /designs/business
-  #     - title: For Art Lovers
-  #       url: /designs/aesthetic
+# - title: Services
+#   dropdown: true
+#   dropdown_links:
+#     - title: For Business
+#       url: /designs/business
+#     - title: For Art Lovers
+#       url: /designs/aesthetic
 
-  # - title: Our Designs
-  #   dropdown: true
-  #   dropdown_links:
-  #     - title: Business Graphics
-  #       url: /designs/business/portfolio
-  #     - title: Art and Decor
-  #       url: /designs/aesthetic/portfolio
-  #     - title: Shop Designs 
-  #       url: https://lovespresents.com
-  #       target: _blank
-    
-  # - title: "About"
-  #   section: timeline
+# - title: Our Designs
+#   dropdown: true
+#   dropdown_links:
+#     - title: Business Graphics
+#       url: /designs/business/portfolio
+#     - title: Art and Decor
+#       url: /designs/aesthetic/portfolio
+#     - title: Shop Designs 
+#       url: https://lovespresents.com
+#       target: _blank
+  
+# - title: "About"
+#   section: timeline
 
-  # - title: "Team"
-  #   section: team
+# - title: "Team"
+#   section: team
 
-  - title: "Hire Me"
-    url: "/contact"
-    no_collapse: true
+- title: "LovesPresents.com"
+  section: "lovespresents"
 
-  - title: "LovesPresents.com"
-    section: "lovespresents"
+- title: "High Ground"
+  section: "highground"
 
-  - title: "High Ground"
-    section: "highground"
+- title: "@iamalexbrady"
+  section: "iamalexbrady"
 
-  - title: "@iamalexbrady"
-    section: "iamalexbrady"
+# - title: "SpareFoot"
+#   section: "sparefoot"
 
-  # - title: "SpareFoot"
-  #   section: "sparefoot"
+- title: "Open-source"
+  section: "open-source"
 
-  - title: "Open-source"
-    section: "open-source"
+- title: "Hire Me"
+  url: "/contact"
+  visible_small_screen: true

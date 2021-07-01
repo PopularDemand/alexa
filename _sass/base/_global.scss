@@ -79,12 +79,8 @@ h6 {
 
 // Bootstrap Overrides
 .navbar-brand {
-  font-size: 1em;
+  font-size: 1.25em;
   padding:0;
-
-  @media(min-width:576px) {
-    font-size: 1.25em;
-  }
 }
 
 .nav-link {

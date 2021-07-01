@@ -20,6 +20,7 @@ $contact-image: "{{ site.data.style.contact-image }}";
 @import "base/page.scss";
 @import "base/home.scss";
 @import "base/utilities.scss";
+@import "base/resume.scss";
 
 // Components
 @import "components/buttons.scss";

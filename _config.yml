@@ -14,7 +14,7 @@
 theme: jekyll-agency
 
 url    : "https://alexa-anderson.com" # the base hostname & protocol for your site, e.g. http://example.com
-baseurl: "/" # the subpath of your site, e.g. /blog
+baseurl: "" # the subpath of your site, e.g. /blog
 include: ["_pages"]
 
 title      : Alexa Anderson

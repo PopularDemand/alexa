@@ -27,7 +27,7 @@ copyright  :
   # height: 60 #height in px, defaults to 52px
 
 analytics:
-  google: #Google Analytics tracking code here
+  google: "G-T32N526KPS" #Google Analytics tracking code here
 
 collections:
   portfolio:

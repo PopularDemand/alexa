@@ -27,21 +27,26 @@
 # - title: "Team"
 #   section: team
 
-- title: "LovesPresents.com"
-  section: "lovespresents"
+- title: "Tech Blog"
+  url: "/blog"
 
-- title: "High Ground"
-  section: "highground"
-
-- title: "alexbradyorg"
-  section: "alexbrady"
+- title: "Brands"
+  dropdown: true
+  dropdown_links:
+    - title: "LovesPresents.com"
+      section: "lovespresents"
+    - title: "alexbrady"
+      section: "alexbrady"
+    - title: "High Ground"
+      section: "highground"
+    - title: "Open-source"
+      section: "open-source"
 
 # - title: "SpareFoot"
 #   section: "sparefoot"
 
-- title: "Open-source"
-  section: "open-source"
 
-- title: "Hire"
+
+- title: "Contact"
   url: "/contact"
   visible_small_screen: true

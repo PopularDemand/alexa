@@ -1,0 +1,58 @@
+---
+permalink: /blog
+layout: page
+external_id: blog
+class_name: blog-page
+---
+
+<div class="page-section row">
+  <div class="heading-row">
+    <div class="page-heading">
+      <h1>Tech Blog</h1>
+      <h3 class="tagline">by Popular Demand</h3>
+    </div>
+
+    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
+  </div>
+</div>
+
+<ul>
+  {% for post in site.posts %}
+    <li class="post" style="list-style:none;">
+      <a href="{{ post.url }}" class="post-title">{{ post.title }}</a>
+      <div class="post-excerpt">
+        {{ post.excerpt }}
+      </div>
+    </li>
+
+
+  {% endfor %}
+</ul>
+
+<style>
+.heading-row {
+  display:  flex;
+  justify-content: center;
+}
+
+.page-heading {
+  margin-right: 20px;
+}
+
+.tagline {
+  font-size:  1rem;
+}
+
+.post-title {
+  font-weight:bold;
+  font-size: 1.3em;
+}
+
+.post-excerpt {
+  font-size: .9em;
+}
+
+.post-excerpt p {
+  margin: 0;
+}
+</style>

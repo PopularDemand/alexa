@@ -45,9 +45,13 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   {%- for dropdown_link in link.dropdown_links -%}
-                    <a class="dropdown-item nav-link" href="{{ dropdown_link.url }}" target="{{ dropdown_link.target }}">
-                      {{ dropdown_link.title }}
-                    </a>
+                    {%- if dropdown_link.url -%}
+                      <a class="dropdown-item nav-link" href="{{ dropdown_link.url }}" target="{{ dropdown_link.target }}">
+                        {{ dropdown_link.title }}
+                      </a>
+                    {%- else if dropdown_link.section -%}
+                      <a class="dropdown-item nav-link js-scroll-trigger" href="{{ site.baseurl }}/#{{ dropdown_link.section }}" target="{{ dropdown_link.target }}">{{ dropdown_link.title }}</a>
+                    {%- endif -%}
                   {%- endfor -%}
                 </ul>
               </li>

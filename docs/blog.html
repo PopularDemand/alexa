@@ -90,22 +90,43 @@
   </div>
 </div>
 
-<ul>
-  
-    <li class="post" style="list-style:none;">
-      <a href="/2021/01/01/initial-ec2-setup.html" class="post-title">Setting up an AWS EC2 Server</a>
-      <div class="post-excerpt">
-        <p>Before a developer can set up a web application on an EC2 instance or similar remote server, there must first be a remote server running that the developer can log into and install software on.</p>
+<div class="page-section row">
+  <ul>
+    
+      <li class="post" style="list-style:none;">
+        <a href="/2021/01/08/deploying-docker-ec2.html" class="post-title">Deploying a Docker Container on EC2</a>
+        <div class="post-excerpt">
+          <p>Docker makes it easy to run multiple web applications on one server instance. Because it’s container architecture isolates applications and their dependencies, Docker is the software of choice when considering how to deploy multiple applications, databases, and caches and allow them to share resources without colliding namespaces/3rd party library requirements.</p>
+
+<p>In this solution walkthrough, I deploy a Docker Container onto EC2.</p>
+
+
+        </div>
+      </li>
+
+
+    
+      <li class="post" style="list-style:none;">
+        <a href="/2021/01/01/initial-ec2-setup.html" class="post-title">Setting up an AWS EC2 Server</a>
+        <div class="post-excerpt">
+          <p>Before a developer can set up a web application on an EC2 instance or similar remote server, there must first be a remote server running that the developer can log into and install software on.</p>
 
 <p>This is a solution walkthrough of taking an AWS EC2 instance from launch to having a non-default Unix user created. This walkthrough is a prerequisite for setting up web applications suing technologies such as Rails or Docker on an EC2 instance (or similar remote server.)</p>
 
 
-      </div>
-    </li>
+        </div>
+      </li>
 
 
-  
-</ul>
+    
+  </ul>
+</div>
+
+<div class="page-section row text-center" >
+  <a href="https://lovespresents.com" target="_blank">
+    <img src="/assets/img/posts/keep_love_around_3x1_love.png" style="width:50%;min-width:320px;" />
+  </a>
+</div>
 
 <style>
 .heading-row {
@@ -119,6 +140,10 @@
 
 .tagline {
   font-size:  1rem;
+}
+
+.post:not(:last-of-type) {
+  margin-bottom: 40px;
 }
 
 .post-title {

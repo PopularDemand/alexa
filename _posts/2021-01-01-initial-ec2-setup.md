@@ -61,18 +61,18 @@ The command creates an entry /etc/passwd, a group, and a home directory for the 
 
 In this solution, the user account is named `newuser`.
 
-sudo adduser newuser --disabled-password
+`$ sudo adduser newuser --disabled-password`
 
 If you did not use Ubuntu, you may not need `--disabled-password` flag.
 
 ## Step 4 — Set up user ssh
-**1\.** Print public key of the your-pem-name.pem file downloaded when the instance was launched.
+**1\.** Print public key of the your-pem-name.pem file downloaded when the instance was launched. On your local terminal run:
 
 `$ ssh-keygen -y -f /path_to/your-pem-name.pem`
 
-You will need this at later steps
+You will need the result of this command at later steps.
 
-**2\.** From the default account, switch to the new user account.
+**2\.** On the remote server, switch from the default account to the new user account.
 
 `$ sudo su - newuser`
 
@@ -115,20 +115,20 @@ Alternatively, add command to `~/.bashrc` or similar (.bash_profile, .zshrc) to 
 
 **local computer .bashrc or similar**
 
-Non-Windows WSL users, add the following:
+Non-WSL users, add the following:
 
-`ssh-add ~/keyfile.pem >/dev/null 2>&1`
+`$ ssh-add ~/keyfile.pem >/dev/null 2>&1`
 
 Windows WSL Users, should add the following instead:
 
 ```
-[ -x /usr/bin/ssh-agent ] && eval "$(ssh-agent -s)"
-ssh-add ~/path_to/youre-pem-name.pem >/dev/null 2>&1
+$ [ -x /usr/bin/ssh-agent ] && eval "$(ssh-agent -s)"
+$ ssh-add ~/path_to/youre-pem-name.pem >/dev/null 2>&1
 ```
 
 Make sure to redirect output to /dev/null to silence the command, or you’ll see “Identity Added” every time you open the terminal.
 
-For Windows WSL users, see this stackoverflow post for an error like ["Could not open a connection to your authentication agent."](https://stackoverflow.com/questions/48518694/ssh-agent-reset-in-windows-subsystem-for-linux-wsl)
+For Windows WSL users, see this StackOverflow post for an error like ["Could not open a connection to your authentication agent."](https://stackoverflow.com/questions/48518694/ssh-agent-reset-in-windows-subsystem-for-linux-wsl)
 
 
 ## Step 5 — Granting admin privileges (optional)
@@ -159,11 +159,11 @@ You will have to enable more ports as you add more services and applications tha
 ## Step 7 (optional) — Password Authentication
 If you will be logging in to the remote server from multiple devices, consider password authentication. This is less secure than ssh.
 
-1\.Allow password authentication on the server:
+1\. Allow password authentication on the server:
 
-https://phoenixnap.com/kb/ssh-permission-denied-publickey#ftoc-heading-3
+[https://phoenixnap.com/kb/ssh-permission-denied-publickey](https://phoenixnap.com/kb/ssh-permission-denied-publickey#ftoc-heading-3)
 
-2\. create a password for a user:
+2\. Create a password for a user:
 
 `$ sudo passwd [username]`
 

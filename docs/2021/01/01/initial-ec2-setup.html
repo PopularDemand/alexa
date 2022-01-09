@@ -149,18 +149,18 @@ The command creates an entry /etc/passwd, a group, and a home directory for the 
 
 <p>In this solution, the user account is named <code class="language-plaintext highlighter-rouge">newuser</code>.</p>
 
-<p>sudo adduser newuser –disabled-password</p>
+<p><code class="language-plaintext highlighter-rouge">$ sudo adduser newuser --disabled-password</code></p>
 
 <p>If you did not use Ubuntu, you may not need <code class="language-plaintext highlighter-rouge">--disabled-password</code> flag.</p>
 
 <h2 id="step-4--set-up-user-ssh">Step 4 — Set up user ssh</h2>
-<p><strong>1.</strong> Print public key of the your-pem-name.pem file downloaded when the instance was launched.</p>
+<p><strong>1.</strong> Print public key of the your-pem-name.pem file downloaded when the instance was launched. On your local terminal run:</p>
 
 <p><code class="language-plaintext highlighter-rouge">$ ssh-keygen -y -f /path_to/your-pem-name.pem</code></p>
 
-<p>You will need this at later steps</p>
+<p>You will need the result of this command at later steps.</p>
 
-<p><strong>2.</strong> From the default account, switch to the new user account.</p>
+<p><strong>2.</strong> On the remote server, switch from the default account to the new user account.</p>
 
 <p><code class="language-plaintext highlighter-rouge">$ sudo su - newuser</code></p>
 
@@ -201,19 +201,19 @@ Without these exact file permissions (the exact <code class="language-plaintext 
 
 <p><strong>local computer .bashrc or similar</strong></p>
 
-<p>Non-Windows WSL users, add the following:</p>
+<p>Non-WSL users, add the following:</p>
 
-<p><code class="language-plaintext highlighter-rouge">ssh-add ~/keyfile.pem &gt;/dev/null 2&gt;&amp;1</code></p>
+<p><code class="language-plaintext highlighter-rouge">$ ssh-add ~/keyfile.pem &gt;/dev/null 2&gt;&amp;1</code></p>
 
 <p>Windows WSL Users, should add the following instead:</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ -x /usr/bin/ssh-agent ] &amp;&amp; eval "$(ssh-agent -s)"
-ssh-add ~/path_to/youre-pem-name.pem &gt;/dev/null 2&gt;&amp;1
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ [ -x /usr/bin/ssh-agent ] &amp;&amp; eval "$(ssh-agent -s)"
+$ ssh-add ~/path_to/youre-pem-name.pem &gt;/dev/null 2&gt;&amp;1
 </code></pre></div></div>
 
 <p>Make sure to redirect output to /dev/null to silence the command, or you’ll see “Identity Added” every time you open the terminal.</p>
 
-<p>For Windows WSL users, see this stackoverflow post for an error like <a href="https://stackoverflow.com/questions/48518694/ssh-agent-reset-in-windows-subsystem-for-linux-wsl">“Could not open a connection to your authentication agent.”</a></p>
+<p>For Windows WSL users, see this StackOverflow post for an error like <a href="https://stackoverflow.com/questions/48518694/ssh-agent-reset-in-windows-subsystem-for-linux-wsl">“Could not open a connection to your authentication agent.”</a></p>
 
 <h2 id="step-5--granting-admin-privileges-optional">Step 5 — Granting admin privileges (optional)</h2>
 <p>Many actions on the remote server will require elevated privileges to invoke. To avoid having to log out of our normal user and log in
@@ -241,11 +241,11 @@ $ ufw status
 <h2 id="step-7-optional--password-authentication">Step 7 (optional) — Password Authentication</h2>
 <p>If you will be logging in to the remote server from multiple devices, consider password authentication. This is less secure than ssh.</p>
 
-<p>1.Allow password authentication on the server:</p>
+<p>1. Allow password authentication on the server:</p>
 
-<p>https://phoenixnap.com/kb/ssh-permission-denied-publickey#ftoc-heading-3</p>
+<p><a href="https://phoenixnap.com/kb/ssh-permission-denied-publickey#ftoc-heading-3">https://phoenixnap.com/kb/ssh-permission-denied-publickey</a></p>
 
-<p>2. create a password for a user:</p>
+<p>2. Create a password for a user:</p>
 
 <p><code class="language-plaintext highlighter-rouge">$ sudo passwd [username]</code></p>
 

@@ -12,13 +12,11 @@ In this solution walkthrough, I deploy a Docker Container onto EC2.
 
 The container I will be deploying can be found here: [https://github.com/iamalexbrady/jobs](https://github.com/iamalexbrady/jobs).
 
-## Pre-requisites:
+## Prerequisites:
 
 The code repository must be setup with the proper Docker configuration to allow `docker-compose up`, `docker run`, or similar command.
 
 The EC2 instance must have a user with sudo privilege, and you, the developer, must have login access to that user.
-
----
 
 **Steps**
 1. SSH onto the remote server
@@ -28,11 +26,13 @@ The EC2 instance must have a user with sudo privilege, and you, the developer, m
 5. Set up the repo on the server
 6. Start the Docker container
 
----
+<div class="spacer"></div>
 
 ## 1. SSH onto container
 
 `$ ssh [user_name]@[ip_address]`
+
+<div class="spacer"></div>
 
 ## 2. Generate public key (if necessary)
 
@@ -50,6 +50,8 @@ Enter same passphrase again:
 ```
 
 The defaults are fine.
+
+<div class="spacer"></div>
 
 ## 3. Copy the EC2 user's public key (if necessary)
 
@@ -72,6 +74,8 @@ ssh-rsa [multi_line_encrypted_part] [user_name]@[host]
 
 Copy 100% of the contents of the public key, from ssh-rsa to the end of the host. All of it.
 
+<div class="spacer"></div>
+
 ## 4. Add the EC2 public key to the Github account with ownership access to the repository
 
 This step is mandatory to do once, but does not need to be repeated for each new Dockerize application setup.
@@ -90,6 +94,8 @@ Navigate to your Github user settings. Find the section dedicated to SSH keys or
 	<img src="/assets/img/posts/github_setting_ssh_add_key.png" style="width:50%;min-width:320px;" />
 </p>
 
+<div class="spacer"></div>
+
 ## 5. Set up the Dockerized repository on the server
 
 Navigate to the location in the filesystem you will save the code. Then clone the repository.
@@ -99,6 +105,8 @@ Navigate to the location in the filesystem you will save the code. Then clone th
 You may need to configure permissions on the EC2 Ubuntu filesystem to allow the `git clone` command to be run in the root files (e.g. `/opt`, `/var`).
 
 To enable running `git clone` in a custom directory `/opt/servers/`
+
+<div class="spacer-sm"></div>
 
 ```
 $ # make the directory
@@ -111,6 +119,8 @@ $ # Set read, write, and execute permissions for the ownership user and group
 $ sudo chmod -R 775 /opt/servers
 ```
 
+<div class="spacer-sm"></div>
+
 Change the above example to reference the users and filesystems specific to your project.
 
 You should now be able to run
@@ -122,12 +132,16 @@ $ git clone git@github.com:[your_repository].git
 
 Follow the README for any project specific set up such as proper handling of environment variables. For example, the README in the [example repository](https://github.com/iamalexbrady/jobs) states to run an `install.sh` script.
 
+<div class="spacer"></div>
+
 ## 6. Start the Docker container
 
 `sudo docker-compose up -d`
 
 When the container has started, you will be able to see it running with `docker ps`,
 and use any of the provided functionality of the `docker` and `docker-compose` CLI utilities.
+
+<div class="spacer"></div>
 
 ---
 

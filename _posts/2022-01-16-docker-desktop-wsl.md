@@ -20,6 +20,8 @@ This is a solution walkthrough of installing Docker Desktop for Windows and WSL2
 
 ---
 
+<div class="spacer-sm"></div>
+
 ## Prerequisites
 
 Before you install Docker Desktop, you must complete the following steps:
@@ -38,26 +40,36 @@ WSL is not supported on earlier Windows operating systems.
   NAME                   STATE           VERSION
 * Ubuntu-18.04           Running         2
 ```
+<div class="spacer-sm"></div>
 
 <p style="text-align:center">
 	<img src="/assets/img/posts/wsl-l-v.png" style="width:50%;min-width:320px;" />
 </p>
+
+<div class="spacer-sm"></div>
 
 ```
 # Upgrade existing distro to WSL2 (from Windows)
 > wsl.exe --set-version [distro_name] 2
 ```
 
-Warning: Changing the version takes up all your RAM. It's a huge memory operation, and the only community solutions are to a) patch the process to have max-memory consumption or b) start the process and expect the PC to be locked up for a bit of time. I went with option B, and it took approximately an hour. See the Github issue in the references for more details.
+<div class="text-small">
+<b>**Warning:</b> Changing the version takes up all your RAM. It's a huge memory operation, and the only community solutions are to a) patch the process to have max-memory consumption or b) start the process and expect the PC to be locked up for a bit of time. I went with option B, and it took approximately an hour. See the Github issue in the references for more details.
+</div>
+
+<div class="spacer-sm"></div>
 
 #### Have a project that can be initiated with `docker-compose up`.
 
 See the reference link *Get Started with Docker Compose* for a walkthrough of creating such a project if you do not yet have this.
 
+<div class="spacer"></div>
 
 ## Download
 
 Download [Docker Desktop 2.3.0.2](https://docs.docker.com/desktop/windows/wsl/#download) or a later release.
+
+<div class="spacer"></div>
 
 ## Install
 
@@ -66,6 +78,8 @@ Follow the usual installation instructions to install Docker Desktop. Docs from 
 I did not encounter any questions about enabling WSL2 in January 2022, and found the configuration enabled by default.
 
 Start Docker Desktop from the start menu or however.
+
+<div class="spacer"></div>
 
 ## Run Docker Commands in WSL
 
@@ -81,6 +95,20 @@ $ docker ps
 # exec onto the container
 $ docker exec -it [container_name] bash
 ```
+
+<div class="spacer-sm"></div>
+
+<div class="text-small">
+<b>Update: 2022-01-21</b> I don't recommend planning on developing web applications or apps with ports you need to access from Windows. E.g. - You would like to access your application through a Chrome browser http://localhost:3000.
+The software to allow cross-platform networking, Windows/WSL2, is not built yet . Or at least it's not intuitive enough to make it to page 2 of a Google search.
+is a non-trivial feature that is necessarily on WSL2's roadmap. If you're reading this in the future, do a fresh web search to see if networking between WSL2 Docker and localhost is possible
+<p>
+	<b style="color:red;">What I do recommend is running Docker containers within the Windows OS.</b>
+	This means running `docker-compose` and `docker` commands from within Windows Terminal or Powershell.
+</p>
+</div>
+
+<div class="spacer"></div>
 
 ---
 

@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Professional Website">
   <meta name="author" content="High Ground Tech Team">
-  <link rel="canonical" href="https://alexa-anderson.com/2021/01/08/deploying-docker-ec2.html">
+  <link rel="canonical" href="https://alexa-anderson.com/2022/01/08/deploying-docker-ec2.html">
   <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
 
   <title>Deploying a Docker Container on EC2 | Alexa Anderson</title>
@@ -99,13 +99,11 @@
 
 <p>The container I will be deploying can be found here: <a href="https://github.com/iamalexbrady/jobs">https://github.com/iamalexbrady/jobs</a>.</p>
 
-<h2 id="pre-requisites">Pre-requisites:</h2>
+<h2 id="prerequisites">Prerequisites:</h2>
 
 <p>The code repository must be setup with the proper Docker configuration to allow <code class="language-plaintext highlighter-rouge">docker-compose up</code>, <code class="language-plaintext highlighter-rouge">docker run</code>, or similar command.</p>
 
 <p>The EC2 instance must have a user with sudo privilege, and you, the developer, must have login access to that user.</p>
-
-<hr />
 
 <p><strong>Steps</strong></p>
 <ol>
@@ -117,11 +115,13 @@
   <li>Start the Docker container</li>
 </ol>
 
-<hr />
+<div class="spacer"></div>
 
 <h2 id="1-ssh-onto-container">1. SSH onto container</h2>
 
 <p><code class="language-plaintext highlighter-rouge">$ ssh [user_name]@[ip_address]</code></p>
+
+<div class="spacer"></div>
 
 <h2 id="2-generate-public-key-if-necessary">2. Generate public key (if necessary)</h2>
 
@@ -138,6 +138,8 @@ Enter same passphrase again:
 </code></pre></div></div>
 
 <p>The defaults are fine.</p>
+
+<div class="spacer"></div>
 
 <h2 id="3-copy-the-ec2-users-public-key-if-necessary">3. Copy the EC2 user’s public key (if necessary)</h2>
 
@@ -159,6 +161,8 @@ ssh-rsa <span class="o">[</span>multi_line_encrypted_part] <span class="o">[</sp
 
 <p>Copy 100% of the contents of the public key, from ssh-rsa to the end of the host. All of it.</p>
 
+<div class="spacer"></div>
+
 <h2 id="4-add-the-ec2-public-key-to-the-github-account-with-ownership-access-to-the-repository">4. Add the EC2 public key to the Github account with ownership access to the repository</h2>
 
 <p>This step is mandatory to do once, but does not need to be repeated for each new Dockerize application setup.</p>
@@ -177,6 +181,8 @@ ssh-rsa <span class="o">[</span>multi_line_encrypted_part] <span class="o">[</sp
 	<img src="/assets/img/posts/github_setting_ssh_add_key.png" style="width:50%;min-width:320px;" />
 </p>
 
+<div class="spacer"></div>
+
 <h2 id="5-set-up-the-dockerized-repository-on-the-server">5. Set up the Dockerized repository on the server</h2>
 
 <p>Navigate to the location in the filesystem you will save the code. Then clone the repository.</p>
@@ -186,6 +192,8 @@ ssh-rsa <span class="o">[</span>multi_line_encrypted_part] <span class="o">[</sp
 <p>You may need to configure permissions on the EC2 Ubuntu filesystem to allow the <code class="language-plaintext highlighter-rouge">git clone</code> command to be run in the root files (e.g. <code class="language-plaintext highlighter-rouge">/opt</code>, <code class="language-plaintext highlighter-rouge">/var</code>).</p>
 
 <p>To enable running <code class="language-plaintext highlighter-rouge">git clone</code> in a custom directory <code class="language-plaintext highlighter-rouge">/opt/servers/</code></p>
+
+<div class="spacer-sm"></div>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ # make the directory
 $ sudo mkdir /opt/servers
@@ -197,6 +205,8 @@ $ # Set read, write, and execute permissions for the ownership user and group
 $ sudo chmod -R 775 /opt/servers
 </code></pre></div></div>
 
+<div class="spacer-sm"></div>
+
 <p>Change the above example to reference the users and filesystems specific to your project.</p>
 
 <p>You should now be able to run</p>
@@ -207,12 +217,16 @@ $ git clone git@github.com:[your_repository].git
 
 <p>Follow the README for any project specific set up such as proper handling of environment variables. For example, the README in the <a href="https://github.com/iamalexbrady/jobs">example repository</a> states to run an <code class="language-plaintext highlighter-rouge">install.sh</code> script.</p>
 
+<div class="spacer"></div>
+
 <h2 id="6-start-the-docker-container">6. Start the Docker container</h2>
 
 <p><code class="language-plaintext highlighter-rouge">sudo docker-compose up -d</code></p>
 
 <p>When the container has started, you will be able to see it running with <code class="language-plaintext highlighter-rouge">docker ps</code>,
 and use any of the provided functionality of the <code class="language-plaintext highlighter-rouge">docker</code> and <code class="language-plaintext highlighter-rouge">docker-compose</code> CLI utilities.</p>
+
+<div class="spacer"></div>
 
 <hr />
 
@@ -262,6 +276,13 @@ and use any of the provided functionality of the <code class="language-plaintext
 .sign-off p {
 	margin-bottom: 0;
 }
+
+/* for post content */
+
+.spacer { height: 50px; }
+.spacer-sm { height: 30px; }
+
+h2, h3 { margin-bottom: 30px; }
 </style>
     </div>
 </div>

@@ -14,6 +14,8 @@ This solution will work for a local linux system (ubuntu, windows subsystem linu
 
 Windows users, instructions for installing WSL can be found [here.](https://docs.microsoft.com/en-us/windows/wsl/install)
 
+<div class="spacer"></div>
+
 ## Step 1 — Launch EC2 instance
 1. From the AWS EC2 console click launch new instance
 2. For this tutorial, select ubuntu.
@@ -21,13 +23,18 @@ Windows users, instructions for installing WSL can be found [here.](https://docs
 4. When it asks if you want to download the security key, download it. Name it whatever you want; this solution will refer to it as your-pem-name.pem.
 5. Wait for the server to be initialized. Watch the EC2 instances dashboard until the state is Running.
 
+<div class="spacer"></div>
+
 ## Step 2 — Logging in as root
 On your local system, move the downloaded your-pem-name.pem file to a secure location. path_to/your-pem-name.pem to secure location
 
 `$ cp path_to/your-pem-name.pem ~/.ssh`
 
 ensure pem is not accessible to other users
+
 `$ chmod 600 ~/.ssh/your-pem-name.pem`
+
+<div class="spacer-sm"></div>
 
 If you do not ensure the pem is not accessible to other users, you will see an error like this:
 
@@ -42,6 +49,8 @@ Load key "/home/alexa/.ssh/wsl-ec2-ab1.pem": bad permissions
 ubuntu@18.209.211.46: Permission denied (publickey).
 ```
 
+<div class="spacer-sm"></div>
+
 You should now be able to log into your remote instance's default user account.
 
 `$ ssh -i /path/to/your-pem-name.pem ubuntu@ec2-public-ip`
@@ -54,6 +63,8 @@ The `ec2-public-ip` address can be found within the instances information on the
 	<img src="/assets/img/posts/public_ipv4.gif" style="width:50%;min-width:320px;" />
 </p>
 
+<div class="spacer"></div>
+
 ## Step 3 — Create a user account
 
 Use the adduser command to create the user account and add it to the system.
@@ -64,6 +75,8 @@ In this solution, the user account is named `newuser`.
 `$ sudo adduser newuser --disabled-password`
 
 If you did not use Ubuntu, you may not need `--disabled-password` flag.
+
+<div class="spacer"></div>
 
 ## Step 4 — Set up user ssh
 **1\.** Print public key of the your-pem-name.pem file downloaded when the instance was launched. On your local terminal run:
@@ -101,35 +114,35 @@ From the local computer, run the following command to log into the new user acco
 
 `$ ssh -i /path_to/your-pem-name.pem newuser@ec2-public-ip`
 
-**Additional:**
+<div class="spacer-sm"></div>
 
+**Tip & Trick:**<br>
 To not have to type `-i /path_to/your-pem-name.pem` every time, use the ssh-add command to add the private key to the authentication agent. The key will then automatically be checked when ssh authentication is invoked.
 
 Running the `ssh-add` command from the terminal will store a key in your SSH agent until you log out (one session only):
 
-**local computer**
-
+**local computer**<br>
 `$ ssh-add ~/path_to/my-pem-name.pem`
 
 Alternatively, add command to `~/.bashrc` or similar (.bash_profile, .zshrc) to have the `ssh-add` command invoked automatically when you open a terminal. This makes it so that you do not have to manually run `ssh-add` everytime you log in.
 
-**local computer .bashrc or similar**
-
+**local computer .bashrc or similar**<br>
 Non-WSL users, add the following:
 
-`$ ssh-add ~/keyfile.pem >/dev/null 2>&1`
+`ssh-add ~/keyfile.pem >/dev/null 2>&1`
 
-Windows WSL Users, should add the following instead:
+Windows WSL Users, should add the following instead to the WSL distro's .bashrc (or similar):
 
 ```
-$ [ -x /usr/bin/ssh-agent ] && eval "$(ssh-agent -s)"
-$ ssh-add ~/path_to/youre-pem-name.pem >/dev/null 2>&1
+[ -x /usr/bin/ssh-agent ] && eval "$(ssh-agent -s)"
+ssh-add ~/path_to/youre-pem-name.pem >/dev/null 2>&1
 ```
 
-Make sure to redirect output to /dev/null to silence the command, or you’ll see “Identity Added” every time you open the terminal.
+Make sure to redirect output to `/dev/null` to silence the command, or you’ll see “Identity Added” every time you open the terminal.
 
 For Windows WSL users, see this StackOverflow post for an error like ["Could not open a connection to your authentication agent."](https://stackoverflow.com/questions/48518694/ssh-agent-reset-in-windows-subsystem-for-linux-wsl)
 
+<div class="spacer"></div>
 
 ## Step 5 — Granting admin privileges (optional)
 Many actions on the remote server will require elevated privileges to invoke. To avoid having to log out of our normal user and log in
@@ -143,6 +156,7 @@ As a user with sudo privileges, likely the `ubuntu` or EC2 default user, run the
 
 `$ sudo usermod -aG sudo newuser`
 
+<div class="spacer"></div>
 
 ## Step 6 — Setting up basic firewall
 `ufw` is Uncomplicated Firewall. See the Digital Ocean Setup Guide in the Resources section for more on `ufw`.
@@ -156,6 +170,8 @@ $ ufw status
 
 You will have to enable more ports as you add more services and applications that can accept web traffic. See [`ufw` documentation](https://help.ubuntu.com/community/UFW) when you get to that step.
 
+<div class="spacer"></div>
+
 ## Step 7 (optional) — Password Authentication
 If you will be logging in to the remote server from multiple devices, consider password authentication. This is less secure than ssh.
 
@@ -166,6 +182,8 @@ If you will be logging in to the remote server from multiple devices, consider p
 2\. Create a password for a user:
 
 `$ sudo passwd [username]`
+
+<div class="spacer"></div>
 
 ---
 

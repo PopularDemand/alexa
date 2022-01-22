@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Professional Website">
   <meta name="author" content="High Ground Tech Team">
-  <link rel="canonical" href="https://alexa-anderson.com/2021/01/16/docker-desktop-wsl.html">
+  <link rel="canonical" href="https://alexa-anderson.com/2022/01/16/docker-desktop-wsl.html">
   <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
 
   <title>Setting Up Docker Desktop for Windows and WSL2 | Alexa Anderson</title>
@@ -107,6 +107,8 @@ This is a solution walkthrough of installing Docker Desktop for Windows and WSL2
 
 <hr />
 
+<div class="spacer-sm"></div>
+
 <h2 id="prerequisites">Prerequisites</h2>
 
 <p>Before you install Docker Desktop, you must complete the following steps:</p>
@@ -124,24 +126,35 @@ This is a solution walkthrough of installing Docker Desktop for Windows and WSL2
   NAME                   STATE           VERSION
 * Ubuntu-18.04           Running         2
 </code></pre></div></div>
+<div class="spacer-sm"></div>
 
 <p style="text-align:center">
 	<img src="/assets/img/posts/wsl-l-v.png" style="width:50%;min-width:320px;" />
 </p>
 
+<div class="spacer-sm"></div>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Upgrade existing distro to WSL2 (from Windows)
 &gt; wsl.exe --set-version [distro_name] 2
 </code></pre></div></div>
 
-<p>Warning: Changing the version takes up all your RAM. It’s a huge memory operation, and the only community solutions are to a) patch the process to have max-memory consumption or b) start the process and expect the PC to be locked up for a bit of time. I went with option B, and it took approximately an hour. See the Github issue in the references for more details.</p>
+<div class="text-small">
+<b>**Warning:</b> Changing the version takes up all your RAM. It's a huge memory operation, and the only community solutions are to a) patch the process to have max-memory consumption or b) start the process and expect the PC to be locked up for a bit of time. I went with option B, and it took approximately an hour. See the Github issue in the references for more details.
+</div>
+
+<div class="spacer-sm"></div>
 
 <h4 id="have-a-project-that-can-be-initiated-with-docker-compose-up">Have a project that can be initiated with <code class="language-plaintext highlighter-rouge">docker-compose up</code>.</h4>
 
 <p>See the reference link <em>Get Started with Docker Compose</em> for a walkthrough of creating such a project if you do not yet have this.</p>
 
+<div class="spacer"></div>
+
 <h2 id="download">Download</h2>
 
 <p>Download <a href="https://docs.docker.com/desktop/windows/wsl/#download">Docker Desktop 2.3.0.2</a> or a later release.</p>
+
+<div class="spacer"></div>
 
 <h2 id="install">Install</h2>
 
@@ -150,6 +163,8 @@ This is a solution walkthrough of installing Docker Desktop for Windows and WSL2
 <p>I did not encounter any questions about enabling WSL2 in January 2022, and found the configuration enabled by default.</p>
 
 <p>Start Docker Desktop from the start menu or however.</p>
+
+<div class="spacer"></div>
 
 <h2 id="run-docker-commands-in-wsl">Run Docker Commands in WSL</h2>
 
@@ -164,6 +179,20 @@ $ docker ps
 # exec onto the container
 $ docker exec -it [container_name] bash
 </code></pre></div></div>
+
+<div class="spacer-sm"></div>
+
+<div class="text-small">
+<b>Update: 2022-01-21</b> I don't recommend planning on developing web applications or apps with ports you need to access from Windows. E.g. - You would like to access your application through a Chrome browser http://localhost:3000.
+The software to allow cross-platform networking, Windows/WSL2, is not built yet . Or at least it's not intuitive enough to make it to page 2 of a Google search.
+is a non-trivial feature that is necessarily on WSL2's roadmap. If you're reading this in the future, do a fresh web search to see if networking between WSL2 Docker and localhost is possible
+<p>
+	<b style="color:red;">What I do recommend is running Docker containers within the Windows OS.</b>
+	This means running `docker-compose` and `docker` commands from within Windows Terminal or Powershell.
+</p>
+</div>
+
+<div class="spacer"></div>
 
 <hr />
 
@@ -221,6 +250,13 @@ $ docker exec -it [container_name] bash
 .sign-off p {
 	margin-bottom: 0;
 }
+
+/* for post content */
+
+.spacer { height: 50px; }
+.spacer-sm { height: 30px; }
+
+h2, h3 { margin-bottom: 30px; }
 </style>
     </div>
 </div>

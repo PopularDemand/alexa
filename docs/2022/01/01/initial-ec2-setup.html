@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Professional Website">
   <meta name="author" content="High Ground Tech Team">
-  <link rel="canonical" href="https://alexa-anderson.com/2021/01/01/initial-ec2-setup.html">
+  <link rel="canonical" href="https://alexa-anderson.com/2022/01/01/initial-ec2-setup.html">
   <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
 
   <title>Setting up an AWS EC2 Server | Alexa Anderson</title>
@@ -101,6 +101,8 @@
 
 <p>Windows users, instructions for installing WSL can be found <a href="https://docs.microsoft.com/en-us/windows/wsl/install">here.</a></p>
 
+<div class="spacer"></div>
+
 <h2 id="step-1--launch-ec2-instance">Step 1 — Launch EC2 instance</h2>
 <ol>
   <li>From the AWS EC2 console click launch new instance</li>
@@ -110,13 +112,18 @@
   <li>Wait for the server to be initialized. Watch the EC2 instances dashboard until the state is Running.</li>
 </ol>
 
+<div class="spacer"></div>
+
 <h2 id="step-2--logging-in-as-root">Step 2 — Logging in as root</h2>
 <p>On your local system, move the downloaded your-pem-name.pem file to a secure location. path_to/your-pem-name.pem to secure location</p>
 
 <p><code class="language-plaintext highlighter-rouge">$ cp path_to/your-pem-name.pem ~/.ssh</code></p>
 
-<p>ensure pem is not accessible to other users
-<code class="language-plaintext highlighter-rouge">$ chmod 600 ~/.ssh/your-pem-name.pem</code></p>
+<p>ensure pem is not accessible to other users</p>
+
+<p><code class="language-plaintext highlighter-rouge">$ chmod 600 ~/.ssh/your-pem-name.pem</code></p>
+
+<div class="spacer-sm"></div>
 
 <p>If you do not ensure the pem is not accessible to other users, you will see an error like this:</p>
 
@@ -130,6 +137,8 @@ Load key "/home/alexa/.ssh/wsl-ec2-ab1.pem": bad permissions
 ubuntu@18.209.211.46: Permission denied (publickey).
 </code></pre></div></div>
 
+<div class="spacer-sm"></div>
+
 <p>You should now be able to log into your remote instance’s default user account.</p>
 
 <p><code class="language-plaintext highlighter-rouge">$ ssh -i /path/to/your-pem-name.pem ubuntu@ec2-public-ip</code></p>
@@ -142,6 +151,8 @@ ubuntu@18.209.211.46: Permission denied (publickey).
 	<img src="/assets/img/posts/public_ipv4.gif" style="width:50%;min-width:320px;" />
 </p>
 
+<div class="spacer"></div>
+
 <h2 id="step-3--create-a-user-account">Step 3 — Create a user account</h2>
 
 <p>Use the adduser command to create the user account and add it to the system.
@@ -152,6 +163,8 @@ The command creates an entry /etc/passwd, a group, and a home directory for the 
 <p><code class="language-plaintext highlighter-rouge">$ sudo adduser newuser --disabled-password</code></p>
 
 <p>If you did not use Ubuntu, you may not need <code class="language-plaintext highlighter-rouge">--disabled-password</code> flag.</p>
+
+<div class="spacer"></div>
 
 <h2 id="step-4--set-up-user-ssh">Step 4 — Set up user ssh</h2>
 <p><strong>1.</strong> Print public key of the your-pem-name.pem file downloaded when the instance was launched. On your local terminal run:</p>
@@ -187,33 +200,34 @@ Without these exact file permissions (the exact <code class="language-plaintext 
 
 <p><code class="language-plaintext highlighter-rouge">$ ssh -i /path_to/your-pem-name.pem newuser@ec2-public-ip</code></p>
 
-<p><strong>Additional:</strong></p>
+<div class="spacer-sm"></div>
 
-<p>To not have to type <code class="language-plaintext highlighter-rouge">-i /path_to/your-pem-name.pem</code> every time, use the ssh-add command to add the private key to the authentication agent. The key will then automatically be checked when ssh authentication is invoked.</p>
+<p><strong>Tip &amp; Trick:</strong><br />
+To not have to type <code class="language-plaintext highlighter-rouge">-i /path_to/your-pem-name.pem</code> every time, use the ssh-add command to add the private key to the authentication agent. The key will then automatically be checked when ssh authentication is invoked.</p>
 
 <p>Running the <code class="language-plaintext highlighter-rouge">ssh-add</code> command from the terminal will store a key in your SSH agent until you log out (one session only):</p>
 
-<p><strong>local computer</strong></p>
-
-<p><code class="language-plaintext highlighter-rouge">$ ssh-add ~/path_to/my-pem-name.pem</code></p>
+<p><strong>local computer</strong><br />
+<code class="language-plaintext highlighter-rouge">$ ssh-add ~/path_to/my-pem-name.pem</code></p>
 
 <p>Alternatively, add command to <code class="language-plaintext highlighter-rouge">~/.bashrc</code> or similar (.bash_profile, .zshrc) to have the <code class="language-plaintext highlighter-rouge">ssh-add</code> command invoked automatically when you open a terminal. This makes it so that you do not have to manually run <code class="language-plaintext highlighter-rouge">ssh-add</code> everytime you log in.</p>
 
-<p><strong>local computer .bashrc or similar</strong></p>
+<p><strong>local computer .bashrc or similar</strong><br />
+Non-WSL users, add the following:</p>
 
-<p>Non-WSL users, add the following:</p>
+<p><code class="language-plaintext highlighter-rouge">ssh-add ~/keyfile.pem &gt;/dev/null 2&gt;&amp;1</code></p>
 
-<p><code class="language-plaintext highlighter-rouge">$ ssh-add ~/keyfile.pem &gt;/dev/null 2&gt;&amp;1</code></p>
+<p>Windows WSL Users, should add the following instead to the WSL distro’s .bashrc (or similar):</p>
 
-<p>Windows WSL Users, should add the following instead:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ [ -x /usr/bin/ssh-agent ] &amp;&amp; eval "$(ssh-agent -s)"
-$ ssh-add ~/path_to/youre-pem-name.pem &gt;/dev/null 2&gt;&amp;1
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[ -x /usr/bin/ssh-agent ] &amp;&amp; eval "$(ssh-agent -s)"
+ssh-add ~/path_to/youre-pem-name.pem &gt;/dev/null 2&gt;&amp;1
 </code></pre></div></div>
 
-<p>Make sure to redirect output to /dev/null to silence the command, or you’ll see “Identity Added” every time you open the terminal.</p>
+<p>Make sure to redirect output to <code class="language-plaintext highlighter-rouge">/dev/null</code> to silence the command, or you’ll see “Identity Added” every time you open the terminal.</p>
 
 <p>For Windows WSL users, see this StackOverflow post for an error like <a href="https://stackoverflow.com/questions/48518694/ssh-agent-reset-in-windows-subsystem-for-linux-wsl">“Could not open a connection to your authentication agent.”</a></p>
+
+<div class="spacer"></div>
 
 <h2 id="step-5--granting-admin-privileges-optional">Step 5 — Granting admin privileges (optional)</h2>
 <p>Many actions on the remote server will require elevated privileges to invoke. To avoid having to log out of our normal user and log in
@@ -227,6 +241,8 @@ To add these privileges to our new user, we need to add the user to the sudo gro
 
 <p><code class="language-plaintext highlighter-rouge">$ sudo usermod -aG sudo newuser</code></p>
 
+<div class="spacer"></div>
+
 <h2 id="step-6--setting-up-basic-firewall">Step 6 — Setting up basic firewall</h2>
 <p><code class="language-plaintext highlighter-rouge">ufw</code> is Uncomplicated Firewall. See the Digital Ocean Setup Guide in the Resources section for more on <code class="language-plaintext highlighter-rouge">ufw</code>.</p>
 
@@ -238,6 +254,8 @@ $ ufw status
 
 <p>You will have to enable more ports as you add more services and applications that can accept web traffic. See <a href="https://help.ubuntu.com/community/UFW"><code class="language-plaintext highlighter-rouge">ufw</code> documentation</a> when you get to that step.</p>
 
+<div class="spacer"></div>
+
 <h2 id="step-7-optional--password-authentication">Step 7 (optional) — Password Authentication</h2>
 <p>If you will be logging in to the remote server from multiple devices, consider password authentication. This is less secure than ssh.</p>
 
@@ -248,6 +266,8 @@ $ ufw status
 <p>2. Create a password for a user:</p>
 
 <p><code class="language-plaintext highlighter-rouge">$ sudo passwd [username]</code></p>
+
+<div class="spacer"></div>
 
 <hr />
 
@@ -299,6 +319,13 @@ $ ufw status
 .sign-off p {
 	margin-bottom: 0;
 }
+
+/* for post content */
+
+.spacer { height: 50px; }
+.spacer-sm { height: 30px; }
+
+h2, h3 { margin-bottom: 30px; }
 </style>
     </div>
 </div>

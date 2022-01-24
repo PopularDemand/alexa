@@ -1,12 +1,13 @@
 header:
-  pretext: <span>&mdash; Alexa D. Anderson &mdash;</span>
-  title: "Web Engineer"
+  pretext: Alexa D. Anderson
+  title: "@popdemtech"
   subtext: 
   button:
   buttonlink:
+  quote: "*software professional making excellence a habit*"
   social_links:
     - class: "fa-twitter"
-      href: "https://twitter.com/alexatheperfect"
+      href: "https://twitter.com/popdemtech"
     - class: "fa-linkedin-in"
       href: "https://linkedin.com/in/alexa-anderson"
     - class: "fa-github"

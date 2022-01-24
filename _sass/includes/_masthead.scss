@@ -1,20 +1,19 @@
 // Styling for the masthead
 header.masthead {
-  background-image: url("#{$header-image}");
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-position: bottom center;
-  background-size: cover;
+  background-color: black;
 
   @media(min-width:992px) {
     padding-top: 90px;
   }
 
   .intro-text {
-    padding-top: 50px;;
-    padding-bottom: 50px;
-    text-align:center;
+    padding-top: 25px;;
+    padding-bottom: 25px;
     text-shadow: 0px 0px 2px $primary;
+
+    img {
+      margin-right: 25px;
+    }
 
     .intro-lead-in {
       font-size: 24px;
@@ -70,6 +69,11 @@ header.masthead {
         }
       }
     }
+  }
+
+  .intro-quote {
+    color: white;
+    margin-bottom: 15px;
   }
 }
 

@@ -8,6 +8,7 @@ layout: default
 {% assign header_button = site.data.sitetext.header.button %}
 {% assign header_button_link = site.data.sitetext.header.buttonlink %}
 {% assign social_links = site.data.sitetext.header.social_links %}
+{% assign header_quote = site.data.sitetext.header.quote %}
 
 <div class="home">
     {% include masthead.html
@@ -17,6 +18,7 @@ layout: default
         button_text=header_button
         button_link=header_button_link
         social_links=social_links
+        quote=header_quote
     %}
     <div class="page-section" id="lovespresents" style="">
         <div class="container">

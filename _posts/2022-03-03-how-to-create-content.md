@@ -38,6 +38,8 @@ Content creation will only really flow if you are passionate with the activity y
 How do you already spend your time? Just add a notepad, screenrecorder, or camera,
 and you have yourself content created.
 
+<div class="spacer"></div>
+
 <p style="text-align:center">
   <a href="https://lovespresents.com/collections/apparel/products/site-reached-beanie" target="_blank" title="lovespresents.com site reached hat">
 	<img src="/assets/img/posts/site_reached_banner.png" style="width:50%;min-width:320px;" />

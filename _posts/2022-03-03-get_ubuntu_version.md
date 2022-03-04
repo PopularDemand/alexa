@@ -8,6 +8,8 @@ I recently downloaded Ubuntu 20.04.4 LTS.
 
 In order to type that sentence, I needed to get the version of Ubuntu I downloaded.
 
+<!--more-->
+
 The VirtualBox Manager window only reported a cryptic "Ubuntu 64-bit",
 but I am more interested in knowing the version.
 

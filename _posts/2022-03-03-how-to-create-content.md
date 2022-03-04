@@ -3,6 +3,7 @@ layout: post
 title: How to Create Content
 excerpt_separator: <!--more-->
 ---
+Record something happening.
 
 Things you'll need:
 
@@ -10,10 +11,6 @@ Things you'll need:
 * Something happening
 
 <!--more-->
-
-## How to Create Content:
-
-Record something happening.
 
 <div class="spacer"></div>
 

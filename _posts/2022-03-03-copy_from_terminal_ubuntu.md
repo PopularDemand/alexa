@@ -13,7 +13,13 @@ Ctrl+C, within Terminal, terminates the active process.
 
 Or prints this nifty ^C.
 
----
+<div class="spacer"></div>
+
+<p style="text-align:center">
+	<img src="/assets/img/posts/caret_c.png" style="width:50%;min-width:320px;" />
+</p>
+
+<div class="spacer"></div>
 
 To copy output from terminal, press these buttons:
 

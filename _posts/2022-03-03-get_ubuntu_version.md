@@ -11,11 +11,17 @@ In order to type that sentence, I needed to get the version of Ubuntu I download
 The VirtualBox Manager window only reported a cryptic "Ubuntu 64-bit",
 but I am more interested in knowing the version.
 
+<p style="text-align:center">
+	<img src="/assets/img/posts/vb_manager.png" style="width:50%;min-width:320px;" />
+</p>
+
+<div class="spacer"></div>
+
 To get the Ubuntu version from the command line, open Terminal and type the following:
 
 `lsb_release -a`
 
----
+<div class="spacer"></div>
 
 More information on the lsb command
 

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78153436-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+	
+	gtag('config', 'UA-78153436-2');
+  </script>
+  <!-- End Google Analytics -->
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Professional Website">
+  <meta name="author" content="High Ground Tech Team">
+  <link rel="canonical" href="https://alexa-anderson.com/2022/04/16/install-postgresql-on-windows.html">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
+
+  <title>Install PostgreSQL on Windows | Alexa Anderson</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Custom styles for this theme -->
+  <!--<link href="assets/css/agency.min.css" rel="stylesheet">-->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+  
+</head>
+
+	<body id="page-top">
+    	<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <div class="inner-container d-flex flex-wrap justify-content-between align-items-center w-100">
+      <div class="d-flex align-items-flex-start">
+        <a class="navbar-brand js-scroll-trigger" href="/#">Alexa Anderson</a>
+      </div>
+
+      <div class="right d-flex align-items-center d-lg-none">
+        
+        <ul class="navbar-nav text-uppercase">
+          
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
+          
+        </ul>
+
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      
+      <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ml-auto">
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/blog">Tech Blog</a></li><li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Brands
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item nav-link js-scroll-trigger" href="/#lovespresents" target="">LovesPresents.com</a><a class="dropdown-item nav-link js-scroll-trigger" href="/#alexbrady" target="">alexbrady</a><a class="dropdown-item nav-link js-scroll-trigger" href="/#highground" target="">High Ground</a><a class="dropdown-item nav-link js-scroll-trigger" href="/#open-source" target="">Open-source</a></ul>
+              </li><li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+		
+
+<div class="standard-page ">
+    <div class="container">
+        <div class="page-section row">
+  <div class="heading-row">
+    <div class="page-heading">
+      <h1>Tech Blog</h1>
+      <h3 class="tagline">by Popular Demand</h3>
+    </div>
+
+    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
+  </div>
+</div>
+
+<h1>Install PostgreSQL on Windows</h1>
+<p>PostgreSQL is a powerful, open-source relational database system. It’s available on all major operating systems, and has a proven track record of reliability and extensibility. PostgreSQL has been proven to be highly scalable both in the quantity of data it can manage and in the number of concurrent users it can accommodate.</p>
+
+<p>Let’s get it installed on Windows.</p>
+
+<!--more-->
+
+<h2 id="install-postgresql-on-windows">Install PostgreSQL on Windows</h2>
+<p>There is a PostgreSQL installer distributed by Enterprise DB (EDB), an enterprise-level Postgres solution. Download the Windows installer from EDB, and follow the steps. https://www.enterprisedb.com/downloads/postgres-postgresql-downloads</p>
+
+<p>Keep note of what is set as the installation directory. The default location is a <code class="language-plaintext highlighter-rouge">C:\Program Files\PostgreSQL\[##]</code> directory, where <code class="language-plaintext highlighter-rouge">[##]</code> is the numerical version number of the installation. For example, the installation directory for version 14 is <code class="language-plaintext highlighter-rouge">C:\Program Files\PostgreSQL\14\</code>.</p>
+
+<p>Keep note of the password set for the default user as well.</p>
+
+<div class="spacer"></div>
+
+<h3 id="1-configure-binary-paths">1. Configure binary paths</h3>
+<p>The PostgreSQL installation comes with a library of binary executables. These executables, such as <code class="language-plaintext highlighter-rouge">psql</code>, <code class="language-plaintext highlighter-rouge">pg_dump</code>, and <code class="language-plaintext highlighter-rouge">createdb</code>, live within the <code class="language-plaintext highlighter-rouge">/bin</code> directory of the installation folder, and are how a computer user or different program can interact with the database server. The binary path of my version 14 Postgres installation is <code class="language-plaintext highlighter-rouge">C:\Program Files\PostgreSQL\14\bin\</code>. Yours will be in the installation directory specified in the wizard suffixed with <code class="language-plaintext highlighter-rouge">\bin\</code>.</p>
+
+<p><strong>Note:</strong> Within any software package, binary files and executables are placed within a directory named <code class="language-plaintext highlighter-rouge">\bin\</code> by convention.</p>
+
+<div class="spacer"></div>
+
+<h4 id="add-the-binary-path-to-path">Add the binary path to <code class="language-plaintext highlighter-rouge">$PATH</code></h4>
+<p>To be able to interact with the database servers, we will need to be able to run the exectuables from the command-line. For this, add the binary path to the system’s $PATH variable</p>
+
+<ol>
+  <li>
+    <p>Search Windows for the Edit System Environment Variables dialog by pressing Windows key and typing “environment variables”. Select the result, and a System Properties dialog should appear.</p>
+
+    <div class="spacer-sm"></div>
+    <p style="text-align:center">
+     <img src="/assets/img/posts/install-postgresql-on-windows/edit-environ-vars-windows.png" style="width:50%;min-width:320px;" />
+ </p>
+    <div class="spacer-sm"></div>
+  </li>
+  <li>Click “Environment Variables…” at the bottom of the dialog.</li>
+  <li>
+    <p>The Environment Variables window is split top and bottom as “User variables” and “System variables”. Within “System variables,” double-click the row for the variable named “Path”.</p>
+
+    <div class="spacer-sm"></div>
+    <p style="text-align:center">
+     <img src="/assets/img/posts/install-postgresql-on-windows/3_env-vars-screen.png" style="width:50%;min-width:320px;" />
+ </p>
+    <div class="spacer-sm"></div>
+  </li>
+  <li>Within the Edit environment varibale window that appearch, click the New button, and paste the binary path for PostgreSQL.</li>
+  <li>Click OK on each of the windows opened for this process.</li>
+  <li>The PostgreSQL executables have been added to the <code class="language-plaintext highlighter-rouge">$PATH</code>. To test this, start a new terminal instance and <code class="language-plaintext highlighter-rouge">psql</code> to see the output of the command.</li>
+</ol>
+
+<div class="spacer"></div>
+
+<h4 id="add-the-binary-path-to-pgadmin">Add the binary path to pgAdmin</h4>
+<p>The EDB installation wizard installs the pgAdmin program, a graphical interface for PostgreSQL. This is can be an alternative interface to access database servers, databases, tables, and other</p>
+<ul>
+  <li>Login to pgAdmin as the default user, <code class="language-plaintext highlighter-rouge">postgres</code>, using the password set within the installation wizard.</li>
+  <li>Open Preferences dialog, and add the binary path to the version of Postgres you have installed. The location for this is found at File &gt; Preferences &gt; Paths &gt; Binary Paths &gt; PostgreSQL Binary Path &gt; [YOUR_VERSION].</li>
+</ul>
+
+<div class="spacer-sm"></div>
+<p style="text-align:center">
+	<img src="/assets/img/posts/install-postgresql-on-windows/pgAdmin-binary-paths-pref.png" style="width:50%;min-width:320px;" />
+</p>
+<div class="spacer"></div>
+
+<h3 id="2-start-the-database-server">2. Start the Database Server</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">pg_ctl</code> command is used to manage Postgres database servers. Start and stop a database server by specifying the data directory, and supplying the <code class="language-plaintext highlighter-rouge">start</code> or <code class="language-plaintext highlighter-rouge">stop</code> subcommand, respectively. The data directory was set in the installation wizard. It defaults to <code class="language-plaintext highlighter-rouge">[POSTGRESQL_INSTALLATION_DIRECTORY]\data\</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; pg_ctl restart -D C:\Program Files\PostgreSQL\14\data\
+&gt; pg_ctl stop -D C:\Program Files\PostgreSQL\14\data\
+&gt; pg_ctl start -D C:\Program Files\PostgreSQL\14\data\
+</code></pre></div></div>
+
+<p>The subcommand <code class="language-plaintext highlighter-rouge">restart</code> does what you think.</p>
+
+<div class="spacer"></div>
+
+<h3 id="3-create-a-non-default-user">3. Create a non-default user</h3>
+<p>The <code class="language-plaintext highlighter-rouge">createuser</code> command is used to create PostgreSQL users. Note that this is a separate list of users than the Windows login users. For example, it is common to create a separate user per software application with database access.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; createuser --superuser --pwprompt --username=postgres $Env:Username
+</code></pre></div></div>
+
+<p>This command:</p>
+<ul>
+  <li>creates a user</li>
+  <li>with superuser privileges</li>
+  <li>prompts for the user’s password after creation (necessary)</li>
+  <li>connects to the database server as the <code class="language-plaintext highlighter-rouge">postgres</code> user</li>
+  <li>sets the user’s name to <code class="language-plaintext highlighter-rouge">$Env:Username</code>, and environment variable within Windows Terminal</li>
+</ul>
+
+<div class="spacer"></div>
+
+<h3 id="4-create-a-non-default-database">4. Create a non-default database</h3>
+<p>The <code class="language-plaintext highlighter-rouge">createdb</code> command is used to create PostgreSQL databases. The database server serves a “database cluster.” A database cluster collection of databases that is managed by a single instance of a running database server. In file system terms, it is a single directory in which all data will be stored (i.e. Postgres’ <code class="language-plaintext highlighter-rouge">/data</code> directory.)</p>
+
+<p>The PostgreSQL installer created a default database named <code class="language-plaintext highlighter-rouge">postgres</code>. It is convention for each software program to have its own, uniquely-named database. For practice and utility with the <code class="language-plaintext highlighter-rouge">psql</code> command in upcoming sections, create a new database named after your Windows user.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; createdb $Env:Username --username=$Env:Username
+</code></pre></div></div>
+
+<p>This command:</p>
+<ul>
+  <li>creates a database</li>
+  <li>named the logged in user’s username</li>
+  <li>connecting as the PostgreSQL user named the same as the logged in user</li>
+</ul>
+
+<div class="spacer"></div>
+
+<h3 id="5-test-the-installation">5. Test the Installation</h3>
+<p>If all has gone well, you have the PostgreSQL command-line tools, a running database server, and a user and database within that server. Test all of these by issuing the <code class="language-plaintext highlighter-rouge">psql</code> command from the command line. This command defaults to connecting with a username of the currently logged in user, and connecting to a database with the same name as the logged in user. This simple command will test all three aspects of installation.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; psql
+</code></pre></div></div>
+
+<div class="spacer"></div>
+
+<h3 id="references">References</h3>
+<p>Managing Postgres users and privileges: <a href="https://kb.objectrocket.com/postgresql/how-to-list-users-in-postgresql-782">https://kb.objectrocket.com/postgresql/how-to-list-users-in-postgresql-782</a></p>
+
+<p>PostgreSQL Security Best Practices: <a href="https://resources.2ndquadrant.com/hubfs/Whitepaper%20PDFs/PostgreSQL_Security_Best_Practices_Whitepaper.pdf">https://resources.2ndquadrant.com/hubfs/Whitepaper PDFs/PostgreSQL_Security_Best_Practices_Whitepaper.pdf</a></p>
+
+<p>How to start PostgreSQL on Windows: <a href="https://stackoverflow.com/questions/36629963/how-can-i-start-postgresql-on-windows">https://stackoverflow.com/questions/36629963/how-can-i-start-postgresql-on-windows</a></p>
+
+
+<div class="page-section row">
+  <div class="sign-off" style="text-align:center;">
+  	<a href="https://twitter.com/popdemtech" target="_blank">
+	    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
+    	<p>Ping me on Twitter if you found this helpful!</p>
+    	<h3 class="tagline">- @popdemtech</h3>
+	</a>
+  </div>
+</div>
+
+<div class="page-section row">
+	<div class="text-center">
+		<a href="/blog">< Back to Tech Blog</a>
+	</div>
+</div>
+
+<style>
+.heading-row {
+  display:  flex;
+  justify-content: center;
+}
+
+.page-heading {
+  margin-right: 20px;
+}
+
+.tagline {
+  font-size:  1rem;
+}
+
+.sign-off .alexa-img {
+  margin-bottom: 20px;
+}
+
+.sign-off p {
+	margin-bottom: 0;
+}
+
+/* for post content */
+
+.spacer { height: 50px; }
+.spacer-sm { height: 30px; }
+
+h2, h3 { margin-bottom: 30px; }
+
+pre {
+  display:  inline-block;
+  padding:  20px;
+  background-color:  #efefef;
+}
+</style>
+    </div>
+</div>
+
+		<!-- Footer -->
+<footer class="footer" id="footer" style="background-color:white;">
+  <div class="container">
+    <!-- Social Media -->
+    <div class="row mb-4">
+      <ul class="list-inline social-buttons">
+        
+        <li class="list-inline-item">
+          
+          <a href="https://twitter.com/alexatheperfect">
+            <i class="fab fa-twitter"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://www.linkedin.com/in/alexa-anderson">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://github.com/populardemand">
+            <i class="fab fa-github"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://instagram.com/popdemtech">
+            <i class="fab fa-instagram"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://medium.com/@PopularDemand">
+            <i class="fab fa-medium"></i>
+          </a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+    <div class="row mb-4 align-items-center justify-content-center">
+      <div class="col">
+        <span class="copyright">Copyright &copy;  2022</span>
+      </div>
+
+      <!-- Legal -->
+      <div class="col">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/legal">Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- End Footer -->
+
+		<!-- Bootstrap core JavaScript -->
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Plugin JavaScript -->
+		<script src="/assets/js/jquery.easing.min.js"></script>
+
+		<!-- Contact form JavaScript -->
+		<script src="/assets/js/jqBootstrapValidation.js"></script>
+		<script src="/assets/js/contact_me.js"></script>
+
+		<!-- Custom scripts for this template -->
+		<script src="/assets/js/agency.min.js"></script>
+		<script src="/assets/js/custom.js"></script>
+
+	</body>
+</html>

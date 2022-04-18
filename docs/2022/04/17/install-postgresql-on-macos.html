@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78153436-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+	
+	gtag('config', 'UA-78153436-2');
+  </script>
+  <!-- End Google Analytics -->
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Professional Website">
+  <meta name="author" content="High Ground Tech Team">
+  <link rel="canonical" href="https://alexa-anderson.com/2022/04/17/install-postgresql-on-macos.html">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
+
+  <title>Install PostgreSQL on MacOS | Alexa Anderson</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Custom styles for this theme -->
+  <!--<link href="assets/css/agency.min.css" rel="stylesheet">-->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+  
+</head>
+
+	<body id="page-top">
+    	<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <div class="inner-container d-flex flex-wrap justify-content-between align-items-center w-100">
+      <div class="d-flex align-items-flex-start">
+        <a class="navbar-brand js-scroll-trigger" href="/#">Alexa Anderson</a>
+      </div>
+
+      <div class="right d-flex align-items-center d-lg-none">
+        
+        <ul class="navbar-nav text-uppercase">
+          
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
+          
+        </ul>
+
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      
+      <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ml-auto">
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/blog">Tech Blog</a></li><li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Brands
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item nav-link js-scroll-trigger" href="/#lovespresents" target="">LovesPresents.com</a><a class="dropdown-item nav-link js-scroll-trigger" href="/#alexbrady" target="">alexbrady</a><a class="dropdown-item nav-link js-scroll-trigger" href="/#highground" target="">High Ground</a><a class="dropdown-item nav-link js-scroll-trigger" href="/#open-source" target="">Open-source</a></ul>
+              </li><li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+		
+
+<div class="standard-page ">
+    <div class="container">
+        <div class="page-section row">
+  <div class="heading-row">
+    <div class="page-heading">
+      <h1>Tech Blog</h1>
+      <h3 class="tagline">by Popular Demand</h3>
+    </div>
+
+    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
+  </div>
+</div>
+
+<h1>Install PostgreSQL on MacOS</h1>
+<p>PostgreSQL is a powerful, open-source relational database system. It’s available on all major operating systems, and has a proven track record of reliability and extensibility. PostgreSQL has been proven to be highly scalable both in the quantity of data it can manage and in the number of concurrent users it can accommodate.</p>
+
+<p>Let’s get it installed on MacOS.</p>
+
+<!--more-->
+
+<h2 id="install-postgresql-on-mac-with-homebrew">Install PostgreSQL on Mac with Homebrew</h2>
+
+<p>Homebrew is a popular package manager for MacOS. A package manager provides the ability to quickly install packages, their dependency packages, and keep the packages up to date. “Packages” are software libraries and executables generally runnable from a command-line interface.</p>
+
+<h3 id="1-install-homebrew">1. Install Homebrew</h3>
+<p>While we will use Homebrew to install PostgreSQL and its dependencies, we first need to install the Homebrew package itself. If you do not already have Homebrew installed, run the following from a MacOS commandline:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>/usr/bin/ruby <span class="nt">-e</span> <span class="s2">"</span><span class="si">$(</span>curl <span class="nt">-fsSL</span> https://raw.githubusercontent.com/Homebrew/install/master/install<span class="si">)</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<div class="spacer"></div>
+
+<h3 id="2-install-postgresql">2. Install PostgreSQL</h3>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>brew update
+<span class="nv">$ </span>brew <span class="nb">install </span>postgresql
+<span class="nv">$ </span>postgres <span class="nt">--v</span>
+</code></pre></div></div>
+
+<div class="spacer"></div>
+
+<h3 id="3-create-a-database-cluster">3. Create a database cluster</h3>
+<p>A database storage area on disk must be initialized before. A database cluster is a collection of databases that is managed by a single instance of a running database server. In file system terms, it is a single directory in which all data will be stored. There is no default location for this to be stored; we will set the location to be <code class="language-plaintext highlighter-rouge">/usr/local/var/postgres</code>:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>initdb /usr/local/var/postgres
+</code></pre></div></div>
+
+<p>You may see the error message: <code class="language-plaintext highlighter-rouge">initdb: directory "/usr/local/var/postgres" exists but is not empty</code>. It means the folder you are attempting to create already exists. You are safe to move on to the next step.</p>
+
+<div class="spacer"></div>
+
+<h3 id="4-start-the-database-server">4. Start the database server</h3>
+<p>Use the command <a href="https://www.postgresql.org/docs/current/app-pg-ctl.html"><code class="language-plaintext highlighter-rouge">pg_ctl</code></a> to control PostgreSQL database servers. The parameter to the <code class="language-plaintext highlighter-rouge">-D</code> flag indicates the data directory. Use the data directory created in the previous step via <code class="language-plaintext highlighter-rouge">initdb</code>.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pg_ctl <span class="nt">-D</span> /usr/local/var/postgres start
+</code></pre></div></div>
+<p>This will log the initialization processes, output <code class="language-plaintext highlighter-rouge">server started</code>, and return function of the CLI to the user. This command started the database process in the background. To stop the database process, run</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pg_ctl <span class="nt">-D</span> /usr/local/var/postgres stop
+</code></pre></div></div>
+
+<div class="spacer"></div>
+
+<h3 id="5-create-a-database">5. Create a database</h3>
+<p>Within the database cluster, the <code class="language-plaintext highlighter-rouge">initdb</code> command created a database named <code class="language-plaintext highlighter-rouge">postgres</code>. Make an additional database named by your MacOS username with the following command:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>createdb <span class="nv">$USER</span>
+</code></pre></div></div>
+
+<div class="spacer"></div>
+
+<h3 id="references">References</h3>
+<p>Managing Postgres users and privileges: <a href="https://kb.objectrocket.com/postgresql/how-to-list-users-in-postgresql-782">https://kb.objectrocket.com/postgresql/how-to-list-users-in-postgresql-782</a></p>
+
+<p>PostgreSQL Security Best Practices: <a href="https://resources.2ndquadrant.com/hubfs/Whitepaper%20PDFs/PostgreSQL_Security_Best_Practices_Whitepaper.pdf">https://resources.2ndquadrant.com/hubfs/Whitepaper PDFs/PostgreSQL_Security_Best_Practices_Whitepaper.pdf</a></p>
+
+
+<div class="page-section row">
+  <div class="sign-off" style="text-align:center;">
+  	<a href="https://twitter.com/popdemtech" target="_blank">
+	    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
+    	<p>Ping me on Twitter if you found this helpful!</p>
+    	<h3 class="tagline">- @popdemtech</h3>
+	</a>
+  </div>
+</div>
+
+<div class="page-section row">
+	<div class="text-center">
+		<a href="/blog">< Back to Tech Blog</a>
+	</div>
+</div>
+
+<style>
+.heading-row {
+  display:  flex;
+  justify-content: center;
+}
+
+.page-heading {
+  margin-right: 20px;
+}
+
+.tagline {
+  font-size:  1rem;
+}
+
+.sign-off .alexa-img {
+  margin-bottom: 20px;
+}
+
+.sign-off p {
+	margin-bottom: 0;
+}
+
+/* for post content */
+
+.spacer { height: 50px; }
+.spacer-sm { height: 30px; }
+
+h2, h3 { margin-bottom: 30px; }
+
+pre {
+  display:  inline-block;
+  padding:  20px;
+  background-color:  #efefef;
+}
+</style>
+    </div>
+</div>
+
+		<!-- Footer -->
+<footer class="footer" id="footer" style="background-color:white;">
+  <div class="container">
+    <!-- Social Media -->
+    <div class="row mb-4">
+      <ul class="list-inline social-buttons">
+        
+        <li class="list-inline-item">
+          
+          <a href="https://twitter.com/alexatheperfect">
+            <i class="fab fa-twitter"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://www.linkedin.com/in/alexa-anderson">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://github.com/populardemand">
+            <i class="fab fa-github"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://instagram.com/popdemtech">
+            <i class="fab fa-instagram"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://medium.com/@PopularDemand">
+            <i class="fab fa-medium"></i>
+          </a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+    <div class="row mb-4 align-items-center justify-content-center">
+      <div class="col">
+        <span class="copyright">Copyright &copy;  2022</span>
+      </div>
+
+      <!-- Legal -->
+      <div class="col">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/legal">Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- End Footer -->
+
+		<!-- Bootstrap core JavaScript -->
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Plugin JavaScript -->
+		<script src="/assets/js/jquery.easing.min.js"></script>
+
+		<!-- Contact form JavaScript -->
+		<script src="/assets/js/jqBootstrapValidation.js"></script>
+		<script src="/assets/js/contact_me.js"></script>
+
+		<!-- Custom scripts for this template -->
+		<script src="/assets/js/agency.min.js"></script>
+		<script src="/assets/js/custom.js"></script>
+
+	</body>
+</html>

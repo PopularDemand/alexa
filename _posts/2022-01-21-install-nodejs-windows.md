@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Install NodeJS on Windows
+title: Install Node.js on Windows
 excerpt_separator: <!--more-->
 external_selector: install-nodejs-windows
 ---
 
-So you want to develop NodeJS on Windows. It's a simple process. Follow these steps:
+So you want to develop Node.js on Windows. It's a simple process. Follow these steps:
 
 <!--more-->
 
@@ -65,7 +65,7 @@ Click next unless you are certain you want something different. I have never cus
 
 ### 6. Install Tools for Native Modules
 
-You will need a few software tools to be installed in addition to NodeJS in order to compile certain JavaScript/C++ npm modules. NPM modules are 3rd party libraries that can be used to extend the functionality of your application.
+You will need a few software tools to be installed in addition to Node.js in order to compile certain JavaScript/C++ npm modules. NPM modules are 3rd party libraries that can be used to extend the functionality of your application.
 
 If you decide not to install the tools, they can be installed later.
 
@@ -131,7 +131,7 @@ The process will open a Powershell window with Administrator rights, and finish 
 
 ### 12. Wait for and Debug Tools Install
 
-The install process takes longer than the NodeJS install. The installer recommends closing *all* programs other than the installer during the install process.
+The install process takes longer than the Node.js install. The installer recommends closing *all* programs other than the installer during the install process.
 
 I did not do that, and did not find the performance of my PC affected during install. However, the install did fail the first time...
 
@@ -141,7 +141,7 @@ I did not do that, and did not find the performance of my PC affected during ins
 
 The install failed for me near the end, but luckily the fix is easy.
 
-The fix that worked for me was this: Reactivate the NodeJS installer download, and select the 'Repair' option. See Repair Node Installation in the Resources for details. See the resource as well if you have an installation failure not fixed by this solution:
+The fix that worked for me was this: Reactivate the Node.js installer download, and select the 'Repair' option. See Repair Node Installation in the Resources for details. See the resource as well if you have an installation failure not fixed by this solution:
 
 Find the downloaded file from **Step 1**, and select it.
 

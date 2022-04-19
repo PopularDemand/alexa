@@ -33,7 +33,7 @@ See the Reference of this section for more utilities available within the `psql`
 <div class="spacer"></div>
 
 ### Get database connection info
-As part of the NodeJS walkthrough, we will be creating application databases, tables, and queries within the NodeJS application using a JavaScript library specfically for interfacing with the PostgreSQL server.
+As part of the Node.js walkthrough, we will be creating application databases, tables, and queries within the Node.js application using a JavaScript library specfically for interfacing with the PostgreSQL server.
 
 Like a web server, the PostgreSQL server is accessed via TCP -- that is to say, the web application opens a connection to the database server, requests for data, and receives a response. To successfully connect to the data server, and retrieve data, the web application needs to have record of:
 * The database server host location

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78153436-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+	
+	gtag('config', 'UA-78153436-2');
+  </script>
+  <!-- End Google Analytics -->
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Professional Website">
+  <meta name="author" content="High Ground Tech Team">
+  <link rel="canonical" href="https://alexa-anderson.com/2022/04/18/using-psql.html">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
+
+  <title>Using `psql` | Alexa Anderson</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Custom styles for this theme -->
+  <!--<link href="assets/css/agency.min.css" rel="stylesheet">-->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+  
+</head>
+
+	<body id="page-top">
+    	<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <div class="inner-container d-flex flex-wrap justify-content-between align-items-center w-100">
+      <div class="d-flex align-items-flex-start">
+        <a class="navbar-brand js-scroll-trigger" href="/#">Alexa Anderson</a>
+      </div>
+
+      <div class="right d-flex align-items-center d-lg-none">
+        
+        <ul class="navbar-nav text-uppercase">
+          
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
+          
+        </ul>
+
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      
+      <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ml-auto">
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/blog">Tech Blog</a></li><li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Brands
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item nav-link js-scroll-trigger" href="/#lovespresents" target="">LovesPresents.com</a><a class="dropdown-item nav-link js-scroll-trigger" href="/#alexbrady" target="">alexbrady</a><a class="dropdown-item nav-link js-scroll-trigger" href="/#highground" target="">High Ground</a><a class="dropdown-item nav-link js-scroll-trigger" href="/#open-source" target="">Open-source</a></ul>
+              </li><li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+		
+
+<div class="standard-page ">
+    <div class="container">
+        <div class="page-section row">
+  <div class="heading-row">
+    <div class="page-heading">
+      <h1>Tech Blog</h1>
+      <h3 class="tagline">by Popular Demand</h3>
+    </div>
+
+    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
+  </div>
+</div>
+
+<h1>Using `psql`</h1>
+<p>The command <code class="language-plaintext highlighter-rouge">psql</code> allows the developer to enter into a PostgreSQL command line environment for executing SQL and other tasks involving the data in the database. Despite, the examples in this section using the <code class="language-plaintext highlighter-rouge">$</code> bash shell prompt, these commands work on Windows as well as Unix-based systems.</p>
+
+<!--more-->
+
+<h2 id="using-psql">Using <code class="language-plaintext highlighter-rouge">psql</code></h2>
+
+<p>To enter into the postgres shell, use the command <code class="language-plaintext highlighter-rouge">psql</code> and indicate the database. If <code class="language-plaintext highlighter-rouge">psql</code> is used with no arguments, a database of the current user’s name is assumed.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ psql postgres
+</code></pre></div></div>
+
+<p>In this mode, the command line is prefixed by <code class="language-plaintext highlighter-rouge">[DATABASE NAME]=#</code>. To see this in action, type <code class="language-plaintext highlighter-rouge">exit</code> to exit the process for the <code class="language-plaintext highlighter-rouge">postgres</code> database, and enter into a session with the database named by your username by using <code class="language-plaintext highlighter-rouge">psql</code> with no arguments.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>postgres=# exit
+
+$ psql # Run this command with no arguments
+
+# List databases
+popdemtech=# \l
+
+# List users
+popdemtech=# \du
+</code></pre></div></div>
+
+<p>See the Reference of this section for more utilities available within the <code class="language-plaintext highlighter-rouge">psql</code> environment.</p>
+
+<div class="spacer"></div>
+
+<h3 id="get-database-connection-info">Get database connection info</h3>
+<p>As part of the Node.js walkthrough, we will be creating application databases, tables, and queries within the Node.js application using a JavaScript library specfically for interfacing with the PostgreSQL server.</p>
+
+<p>Like a web server, the PostgreSQL server is accessed via TCP – that is to say, the web application opens a connection to the database server, requests for data, and receives a response. To successfully connect to the data server, and retrieve data, the web application needs to have record of:</p>
+<ul>
+  <li>The database server host location</li>
+  <li>The specific database’s name</li>
+  <li>The user attempting access, and</li>
+  <li>The user’s password</li>
+</ul>
+
+<p>The host for local development is <code class="language-plaintext highlighter-rouge">localhost</code>. The database name, user name, and password are known by the developer.</p>
+
+<p>To see connection information, enter the <code class="language-plaintext highlighter-rouge">psql</code> interface and use the <code class="language-plaintext highlighter-rouge">\conninfo</code> command. It will output the database, user, and port of the active <code class="language-plaintext highlighter-rouge">psql</code> session.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ psql databasename
+databasename=# \conninfo
+You are connected to database "databasename" as user "popdemtech" via socket in "/tmp" at port "5432".
+</code></pre></div></div>
+
+<p>A separate database is recommended per web application, and, although user and password can be shared between applications, there are benefits to using unique users and passwords per application as well. This can be called the “Principle of Least Privilege,” and revolves around database security.</p>
+
+<p>Most high-level languages (e.g. JavaScript) come with wrapper libraries that handle Postgres database creation. It will likely be necessary to create the <code class="language-plaintext highlighter-rouge">user</code> and <code class="language-plaintext highlighter-rouge">password</code> using <code class="language-plaintext highlighter-rouge">psql</code> or similar utilities.</p>
+
+<p>See the References for further on PostgreSQL user management and security.</p>
+
+<div class="spacer"></div>
+
+<h3 id="references">References</h3>
+
+<p>PSQL utilities: <a href="https://www.postgresguide.com/utilities/psql/">https://www.postgresguide.com/utilities/psql/</a></p>
+
+
+<div class="page-section row">
+  <div class="sign-off" style="text-align:center;">
+  	<a href="https://twitter.com/popdemtech" target="_blank">
+	    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
+    	<p>Ping me on Twitter if you found this helpful!</p>
+    	<h3 class="tagline">- @popdemtech</h3>
+	</a>
+  </div>
+</div>
+
+<div class="page-section row">
+	<div class="text-center">
+		<a href="/blog">< Back to Tech Blog</a>
+	</div>
+</div>
+
+<style>
+.heading-row {
+  display:  flex;
+  justify-content: center;
+}
+
+.page-heading {
+  margin-right: 20px;
+}
+
+.tagline {
+  font-size:  1rem;
+}
+
+.sign-off .alexa-img {
+  margin-bottom: 20px;
+}
+
+.sign-off p {
+	margin-bottom: 0;
+}
+
+/* for post content */
+
+.spacer { height: 50px; }
+.spacer-sm { height: 30px; }
+
+h2, h3 { margin-bottom: 30px; }
+
+pre {
+  display:  inline-block;
+  padding:  20px;
+  background-color:  #efefef;
+}
+</style>
+    </div>
+</div>
+
+		<!-- Footer -->
+<footer class="footer" id="footer" style="background-color:white;">
+  <div class="container">
+    <!-- Social Media -->
+    <div class="row mb-4">
+      <ul class="list-inline social-buttons">
+        
+        <li class="list-inline-item">
+          
+          <a href="https://twitter.com/alexatheperfect">
+            <i class="fab fa-twitter"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://www.linkedin.com/in/alexa-anderson">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://github.com/populardemand">
+            <i class="fab fa-github"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://instagram.com/popdemtech">
+            <i class="fab fa-instagram"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://medium.com/@PopularDemand">
+            <i class="fab fa-medium"></i>
+          </a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+    <div class="row mb-4 align-items-center justify-content-center">
+      <div class="col">
+        <span class="copyright">Copyright &copy;  2022</span>
+      </div>
+
+      <!-- Legal -->
+      <div class="col">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/legal">Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- End Footer -->
+
+		<!-- Bootstrap core JavaScript -->
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Plugin JavaScript -->
+		<script src="/assets/js/jquery.easing.min.js"></script>
+
+		<!-- Contact form JavaScript -->
+		<script src="/assets/js/jqBootstrapValidation.js"></script>
+		<script src="/assets/js/contact_me.js"></script>
+
+		<!-- Custom scripts for this template -->
+		<script src="/assets/js/agency.min.js"></script>
+		<script src="/assets/js/custom.js"></script>
+
+	</body>
+</html>

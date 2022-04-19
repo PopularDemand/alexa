@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78153436-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+	
+	gtag('config', 'UA-78153436-2');
+  </script>
+  <!-- End Google Analytics -->
+
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Professional Website">
+  <meta name="author" content="High Ground Tech Team">
+  <link rel="canonical" href="https://alexa-anderson.com/2022/04/19/install-nodejs-macos.html">
+  <link rel="icon" type="image/png" href="/assets/img/favicon.png"/>
+
+  <title>Install Node.js on MacOS | Alexa Anderson</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="/assets/css/all.min.css" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Custom styles for this theme -->
+  <!--<link href="assets/css/agency.min.css" rel="stylesheet">-->
+  <link href="/assets/css/agency.css" rel="stylesheet">
+  
+</head>
+
+	<body id="page-top">
+    	<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+    <div class="inner-container d-flex flex-wrap justify-content-between align-items-center w-100">
+      <div class="d-flex align-items-flex-start">
+        <a class="navbar-brand js-scroll-trigger" href="/#">Alexa Anderson</a>
+      </div>
+
+      <div class="right d-flex align-items-center d-lg-none">
+        
+        <ul class="navbar-nav text-uppercase">
+          
+            <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
+          
+        </ul>
+
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+      
+      <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase ml-auto">
+          <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/blog">Tech Blog</a></li><li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Brands
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown"><a class="dropdown-item nav-link js-scroll-trigger" href="/#lovespresents" target="">LovesPresents.com</a><a class="dropdown-item nav-link js-scroll-trigger" href="/#alexbrady" target="">alexbrady</a><a class="dropdown-item nav-link js-scroll-trigger" href="/#highground" target="">High Ground</a><a class="dropdown-item nav-link js-scroll-trigger" href="/#open-source" target="">Open-source</a></ul>
+              </li><li class="nav-item"><a class="nav-link js-scroll-trigger" href="/contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- End Navigation -->
+
+		
+
+<div class="standard-page ">
+    <div class="container">
+        <div class="page-section row">
+  <div class="heading-row">
+    <div class="page-heading">
+      <h1>Tech Blog</h1>
+      <h3 class="tagline">by Popular Demand</h3>
+    </div>
+
+    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
+  </div>
+</div>
+
+<h1>Install Node.js on MacOS</h1>
+<p>Node.js is an open source development platform for executing JavaScript code server-side. While JavaScript runs natively in a browser (i.e. client-side), Node.js provides developers the platform with which to build applications for a controlled environment that runs on a host computer, separate from the JavaScript that is delivered to the client’s browser. In this way, a Node.js application is comparable to PHP, Java, and Ruby, and other application environments that handle web-traffic requests, but are not delivered to the client.</p>
+
+<p>To develop a Node.js application on MacOS, the Node binaries must be installed.</p>
+
+<!--more-->
+
+<h3 id="1-create-a-user-with-admin-access">1. Create a user with admin access.</h3>
+<p>Chances are you are already a user with admin access. If you are aware that you are not a user with admin access, follow <a href="https://osxdaily.com/2017/07/17/how-create-new-admin-account-mac/">these steps</a> (osxdaily.com) to create such a user. You will need a user <em>with</em> admin access to create this new user.</p>
+
+<div class="spacer"></div>
+
+<h3 id="2-install-homebrew">2. Install Homebrew</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+$ brew -v
+</code></pre></div></div>
+
+<div class="spacer"></div>
+
+<h3 id="3-remove-existing-node-versions">3. Remove existing node versions</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew uninstall --force node
+</code></pre></div></div>
+
+<div class="spacer"></div>
+
+<h3 id="4-install-nvm">4. Install NVM</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ brew update
+$ brew install nvm
+</code></pre></div></div>
+
+<div class="spacer"></div>
+
+<h3 id="5-follow-the-instructions-output-by-the-nvm-installer">5. Follow the instructions output by the nvm installer</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>You should create NVM's working directory if it doesn't exist:
+
+  mkdir ~/.nvm
+
+Add the following to ~/.zshrc or your desired shell
+configuration file:
+
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] &amp;&amp; \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] &amp;&amp; \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+You can set $NVM_DIR to any location, but leaving it unchanged from
+/usr/local/opt/nvm will destroy any nvm-installed Node installations
+upon upgrade/reinstall.
+
+Type `nvm help` for further information.
+</code></pre></div></div>
+
+<p>Practically, issue the following commands</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mkdir ~/.nvm
+$ nano ~/.zshrc
+</code></pre></div></div>
+
+<p>Copy and paste the script from the output within <code class="language-plaintext highlighter-rouge">.zshrc</code>, and use the command <code class="language-plaintext highlighter-rouge">source</code> to load the new configuration into the active terminal.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ source ~/.zshrc
+</code></pre></div></div>
+
+<div class="spacer"></div>
+
+<h3 id="6-install-the-latest-long-term-support-version-of-nodejs">6. Install the latest long-term support version of Node.js.</h3>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nvm install --lts
+$ nvm current
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">nvm current</code> displays the currently active node version. It should be the version that was installed with <code class="language-plaintext highlighter-rouge">nvm install --lts</code>.</p>
+
+<div class="spacer"></div>
+
+<h3 id="7-check-the-installations">7. Check the installations</h3>
+<p>You should now have nvm and Node.js installed. Check the installation. Here are the commands with example output.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ nvm -v
+0.39.1
+$ node -v
+v16.14.2
+</code></pre></div></div>
+
+<p>Now that Node is installed, get to building out your application. Check out the sample web-server <a href="https://nodejs.org/en/docs/guides/getting-started-guide/">provided by the Node.js team</a>. But listen! Node.js is useful for more than serving web requests. Node.js can be used to build desktop applications, command-line scripts, and developer libraries (things that can be <code class="language-plaintext highlighter-rouge">npm install</code>ed).</p>
+
+<hr />
+
+<h2 id="resources">Resources</h2>
+
+<p>Similar walkthrough: https://tecadmin.net/install-nvm-macos-with-homebrew/</p>
+
+
+<div class="page-section row">
+  <div class="sign-off" style="text-align:center;">
+  	<a href="https://twitter.com/popdemtech" target="_blank">
+	    <img src="/assets/img/alexa_popdemtech.jpg" width="100px" class="alexa-img" />
+    	<p>Ping me on Twitter if you found this helpful!</p>
+    	<h3 class="tagline">- @popdemtech</h3>
+	</a>
+  </div>
+</div>
+
+<div class="page-section row">
+	<div class="text-center">
+		<a href="/blog">< Back to Tech Blog</a>
+	</div>
+</div>
+
+<style>
+.heading-row {
+  display:  flex;
+  justify-content: center;
+}
+
+.page-heading {
+  margin-right: 20px;
+}
+
+.tagline {
+  font-size:  1rem;
+}
+
+.sign-off .alexa-img {
+  margin-bottom: 20px;
+}
+
+.sign-off p {
+	margin-bottom: 0;
+}
+
+/* for post content */
+
+.spacer { height: 50px; }
+.spacer-sm { height: 30px; }
+
+h2, h3 { margin-bottom: 30px; }
+
+pre {
+  display:  inline-block;
+  padding:  20px;
+  background-color:  #efefef;
+}
+</style>
+    </div>
+</div>
+
+		<!-- Footer -->
+<footer class="footer" id="footer" style="background-color:white;">
+  <div class="container">
+    <!-- Social Media -->
+    <div class="row mb-4">
+      <ul class="list-inline social-buttons">
+        
+        <li class="list-inline-item">
+          
+          <a href="https://twitter.com/alexatheperfect">
+            <i class="fab fa-twitter"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://www.linkedin.com/in/alexa-anderson">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://github.com/populardemand">
+            <i class="fab fa-github"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://instagram.com/popdemtech">
+            <i class="fab fa-instagram"></i>
+          </a>
+          
+        </li>
+        
+        <li class="list-inline-item">
+          
+          <a href="https://medium.com/@PopularDemand">
+            <i class="fab fa-medium"></i>
+          </a>
+          
+        </li>
+        
+      </ul>
+    </div>
+
+    <div class="row mb-4 align-items-center justify-content-center">
+      <div class="col">
+        <span class="copyright">Copyright &copy;  2022</span>
+      </div>
+
+      <!-- Legal -->
+      <div class="col">
+        <ul class="list-inline quicklinks">
+          <li class="list-inline-item">
+            <a href="/legal">Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- End Footer -->
+
+		<!-- Bootstrap core JavaScript -->
+		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+		<!-- Plugin JavaScript -->
+		<script src="/assets/js/jquery.easing.min.js"></script>
+
+		<!-- Contact form JavaScript -->
+		<script src="/assets/js/jqBootstrapValidation.js"></script>
+		<script src="/assets/js/contact_me.js"></script>
+
+		<!-- Custom scripts for this template -->
+		<script src="/assets/js/agency.min.js"></script>
+		<script src="/assets/js/custom.js"></script>
+
+	</body>
+</html>
